@@ -1,11 +1,10 @@
 package Model;
 
-import javafx.scene.shape.Circle;
-
-import javax.swing.text.html.ImageView;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
-public class User {
+public class User implements Serializable {
     private String firstname;
     private String surname;
     private int yearBirth;
@@ -14,12 +13,12 @@ public class User {
     private Gender gender;
     private String username;
     private String password;
-    private Circle profileImage;
+    private byte[] profileImage;
     private ArrayList<Post> userPosts = new ArrayList<>();
 
 
     public User(String firstname, String surname, int yearBirth, int monthBirth
-            , int dayBirth, Gender gender, String username, String password, Circle profileImage) {
+            , int dayBirth, Gender gender, String username, String password, byte[] profileImage) {
         this.firstname = firstname;
         this.surname = surname;
         this.yearBirth = yearBirth;
@@ -29,6 +28,10 @@ public class User {
         this.username = username;
         this.password = password;
         this.profileImage = profileImage;
+    }
+
+    public void print(){
+        System.out.println(Arrays.toString(profileImage));
     }
 
     public String getFirstname() {
@@ -55,7 +58,7 @@ public class User {
         return password;
     }
 
-    public Circle getProfileImage() {
+    public byte[] getProfileImage() {
         return profileImage;
     }
 
