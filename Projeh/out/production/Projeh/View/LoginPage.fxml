@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.LoginController">
+   <children>
+      <TextField fx:id="usernameBox" layoutX="98.0" layoutY="222.0" promptText="username" translateX="1.0" />
+      <PasswordField fx:id="passwordBox" layoutX="98.0" layoutY="282.0" promptText="password" translateX="1.0" />
+      <TextField fx:id="visiblePassword" layoutX="99.0" layoutY="282.0" promptText="password" visible="false" />
+      <CheckBox fx:id="showPasswordBox" layoutX="226.0" layoutY="285.0" mnemonicParsing="false" onAction="#showPassword" />
+      <Button fx:id="signInBox" cache="true" contentDisplay="TOP" ellipsisString="" graphicTextGap="5.0" layoutX="119.0" layoutY="348.0" mnemonicParsing="false" onAction="#SignIn" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #1CCE01;" text="Sign-in" textAlignment="CENTER" textOverrun="CLIP" translateX="1.0">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Button>
+      <Button cancelButton="true" layoutX="84.0" layoutY="448.0" mnemonicParsing="false" onAction="#ForgetPassword" style="-fx-background-color: #202020;" text="forgot my password" textFill="#1ba100" translateX="1.0">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="-7.0" layoutY="570.0" mnemonicParsing="false" onAction="#SignUp" prefHeight="31.0" prefWidth="365.0" style="-fx-background-color: #18B900;" text="Don't have an account? Sign-up" textAlignment="CENTER" translateX="1.0">
+         <effect>
+            <ColorAdjust brightness="-0.08" contrast="-0.05" hue="0.02" saturation="-0.1" />
+         </effect>
+      </Button>
+      <Label fx:id="WrongPasswordErrorLabel" layoutX="92.0" layoutY="412.0" text="Wrong Username or Password !" textFill="#d70000" translateX="1.0" visible="false" />
+      <ImageView fitHeight="132.0" fitWidth="153.0" layoutX="96.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" translateX="1.0">
+         <image>
+            <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/images/87390.png" />
+         </image>
+      </ImageView>
+      <Text fill="#5ce004" layoutX="98.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SBUGRAM" translateX="1.0">
+         <font>
+            <Font name="Centaur" size="32.0" />
+         </font></Text>
+      <Button layoutX="116.0" layoutY="508.0" mnemonicParsing="false" onAction="#Exit" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: #202020;" text="Exit" textFill="#1cce01">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0">
+               <image>
+                  <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/images/exit_480px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+   </children>
+</Pane>
