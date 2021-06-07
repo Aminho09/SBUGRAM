@@ -13,14 +13,14 @@
       <Label fx:id="title" layoutX="86.0" layoutY="21.0" prefHeight="56.0" prefWidth="260.0" text="title" textFill="#5ce004" />
       <ImageView fx:id="profileImage" fitHeight="56.0" fitWidth="65.0" layoutX="11.0" layoutY="10.0">
          <image>
-            <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/images/icons8_user_480px.png" />
+            <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/src/Client/Controller/images/icons8_user_480px.png" />
          </image>
       </ImageView>
       <Button fx:id="unlikedButton" layoutX="522.0" layoutY="22.0" mnemonicParsing="false" onAction="#Like" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #202020;">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
-                  <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/images/heart_512px.png" />
+                  <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/src/Client/Controller/images/heart_512px.png" />
                </image>
             </ImageView>
          </graphic>
@@ -29,7 +29,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
-                  <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/images/filled_heart_512px.png" />
+                  <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/src/Client/Controller/images/filled_heart_512px.png" />
                </image>
             </ImageView>
          </graphic>
@@ -38,7 +38,7 @@
          <graphic>
             <ImageView fitHeight="41.0" fitWidth="42.0">
                <image>
-                  <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/images/detective_480px.png" />
+                  <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/src/Client/Controller/images/detective_480px.png" />
                </image>
             </ImageView>
          </graphic>

@@ -12,7 +12,7 @@
    <children>
       <ImageView fx:id="profileImage" fitHeight="104.0" fitWidth="104.0" layoutX="14.0" layoutY="-1.0">
          <image>
-            <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/images/icons8_user_480px.png" />
+            <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/src/Client/Controller/images/icons8_user_480px.png" />
          </image>
       </ImageView>
       <Label fx:id="usernameLabel" layoutX="33.0" layoutY="99.0" text="username" textAlignment="CENTER" textFill="#5ce004" />
@@ -25,7 +25,7 @@
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="30.0">
                <image>
-                  <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/images/left_arrow_512px.png" />
+                  <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/src/Client/Controller/images/left_arrow_512px.png" />
                </image>
             </ImageView>
          </graphic>
