@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SignUpController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.SignUpController">
    <children>
       <Button layoutX="156.0" layoutY="97.0" mnemonicParsing="false" onAction="#setProfilePhoto" prefHeight="52.0" prefWidth="147.0" style="-fx-background-color: #5ce004;" text="Set profile photo" />
       <Circle fx:id="profilePhoto" fill="#d7d7d7" layoutX="97.0" layoutY="118.0" radius="38.0" stroke="#202020" strokeType="INSIDE" />

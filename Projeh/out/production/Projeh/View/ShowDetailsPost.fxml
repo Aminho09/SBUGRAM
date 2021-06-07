@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="168.0" prefWidth="600.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ShowDetailsPostController">
+<AnchorPane prefHeight="168.0" prefWidth="600.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.ShowDetailsPostController">
    <children>
       <ImageView fx:id="profileImage" fitHeight="104.0" fitWidth="104.0" layoutX="14.0" layoutY="-1.0">
          <image>

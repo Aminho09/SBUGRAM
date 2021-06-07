@@ -7,7 +7,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="600.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="username" layoutX="30.0" layoutY="65.0" text="username" textAlignment="CENTER" textFill="#5ce004" />
@@ -17,7 +16,7 @@
             <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/images/icons8_user_480px.png" />
          </image>
       </ImageView>
-      <Button fx:id="unlikedButton" layoutX="522.0" layoutY="29.0" mnemonicParsing="false" onAction="#Like" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #202020;">
+      <Button fx:id="unlikedButton" layoutX="522.0" layoutY="22.0" mnemonicParsing="false" onAction="#Like" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #202020;">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
@@ -26,7 +25,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="likedButton" layoutX="522.0" layoutY="29.0" mnemonicParsing="false" onAction="#Unlike" style="-fx-background-color: #202020;" visible="false">
+      <Button fx:id="likedButton" layoutX="522.0" layoutY="22.0" mnemonicParsing="false" onAction="#Unlike" style="-fx-background-color: #202020;" visible="false">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
@@ -35,7 +34,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="460.0" layoutY="24.0" mnemonicParsing="false" onAction="#ShowPost" style="-fx-background-color: #202020;">
+      <Button layoutX="460.0" layoutY="17.0" mnemonicParsing="false" onAction="#ShowPost" style="-fx-background-color: #202020;">
          <graphic>
             <ImageView fitHeight="41.0" fitWidth="42.0">
                <image>
@@ -44,5 +43,6 @@
             </ImageView>
          </graphic>
       </Button>
+      <Label fx:id="likedNumbers" alignment="CENTER" layoutX="542.0" layoutY="60.0" text="0" textFill="#5ce004" />
    </children>
 </AnchorPane>
