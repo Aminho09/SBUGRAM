@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.SignUpController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.SignUpController">
    <children>
       <Button layoutX="156.0" layoutY="97.0" mnemonicParsing="false" onAction="#setProfilePhoto" prefHeight="52.0" prefWidth="147.0" style="-fx-background-color: #5ce004;" text="Set profile photo" />
       <Circle fx:id="profilePhoto" fill="#d7d7d7" layoutX="97.0" layoutY="118.0" radius="38.0" stroke="#202020" strokeType="INSIDE" />
@@ -28,9 +25,9 @@
       <TextField fx:id="username" alignment="CENTER" layoutX="53.0" layoutY="388.0" prefHeight="25.0" prefWidth="250.0" promptText="Username" />
       <TextField fx:id="password" alignment="CENTER" layoutX="53.0" layoutY="443.0" prefHeight="25.0" prefWidth="250.0" promptText="Password" />
       <TextField fx:id="confirmPassword" alignment="CENTER" layoutX="53.0" layoutY="498.0" prefHeight="25.0" prefWidth="250.0" promptText="Confirm Password" />
-      <ImageView fitHeight="35.0" fitWidth="40.0" layoutX="14.0" layoutY="8.0">
+      <ImageView fitHeight="35.0" fitWidth="40.0" layoutX="23.0" layoutY="9.0">
          <image>
-            <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/images/87390.png" />
+            <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/src/Client/Controller/images/87390.png" />
          </image>
       </ImageView>
       <Text fill="#5ce004" layoutX="69.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SBUGRAM" wrappingWidth="153.34375">

@@ -21,7 +21,8 @@ public class PageLoader {
         stage.setTitle("SBU GRAM");
         stage.initStyle(StageStyle.UNDECORATED); //the three buttons on top of stage will be shown
         stage.setResizable(false); //the resizable button is enabled. if your design is responsive this must be true
-        stage.getIcons().add(new Image(Paths.get("Images/87390.png").toUri().toString()));
+        stage.getIcons().add(new Image(Paths.get("/Users/lenovo/Desktop/Ap projectss/Projeh" +
+                "/src/Client/Controller/images/87390.png").toUri().toString()));
     }
 
     public void setRoot(String fxml) throws IOException {

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class User implements Serializable {
+public class User implements Serializable, Comparable {
     private String firstname;
     private String surname;
     private int yearBirth;
@@ -15,7 +15,10 @@ public class User implements Serializable {
     private String password;
     private byte[] profileImage;
     private ArrayList<Post> userPosts = new ArrayList<>();
-
+    private ArrayList<User> follower = new ArrayList<>();
+    private ArrayList<User> following = new ArrayList<>();
+    private long timeOfUser = Time.getMilli();
+    private String timeString = Time.getTime();
 
     public User(String firstname, String surname, int yearBirth, int monthBirth
             , int dayBirth, Gender gender, String username, String password, byte[] profileImage) {
@@ -29,6 +32,8 @@ public class User implements Serializable {
         this.password = password;
         this.profileImage = profileImage;
     }
+
+    public User() {}
 
     public void print(){
         System.out.println(Arrays.toString(profileImage));
@@ -62,14 +67,57 @@ public class User implements Serializable {
         return profileImage;
     }
 
+    public String getTimeString() {
+        return timeString;
+    }
+
     public void setUserPosts(ArrayList<Post> userPosts) {
         this.userPosts = userPosts;
     }
 
-    public void addPost(Post post){
-        userPosts.add(post);
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setYearBirth(int yearBirth) {
+        this.yearBirth = yearBirth;
+    }
+
+    public void setMonthBirth(int monthBirth) {
+        this.monthBirth = monthBirth;
+    }
+
+    public void setDayBirth(int dayBirth) {
+        this.dayBirth = dayBirth;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setProfileImage(byte[] profileImage) {
+        this.profileImage = profileImage;
+    }
+
+    public void setFollower(ArrayList<User> follower) {
+        this.follower = follower;
+    }
+
+    public void setFollowing(ArrayList<User> following) {
+        this.following = following;
+    }
 
     public int getMonthBirth() {
         return monthBirth;
@@ -83,4 +131,32 @@ public class User implements Serializable {
         return userPosts;
     }
 
+    public ArrayList<User> getFollower() {
+        return follower;
+    }
+
+    public ArrayList<User> getFollowing() {
+        return following;
+    }
+
+    public long getTimeOfUser() {
+        return timeOfUser;
+    }
+
+    public void setTimeOfUser(long timeOfUser) {
+        this.timeOfUser = timeOfUser;
+    }
+
+    public void setTimeString(String timeString) {
+        this.timeString = timeString;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        User anotherUser = (User) o;
+        if (this.timeOfUser > anotherUser.timeOfUser)
+            return -1;
+        else
+            return 1;
+    }
 }
