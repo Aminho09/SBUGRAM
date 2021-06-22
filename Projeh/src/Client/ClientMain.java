@@ -25,6 +25,7 @@ public class ClientMain extends Application {
 
 
     public static void main(String[] args) {
+        InformationTrader.connectToServer();
         launch(args);
     }
 }

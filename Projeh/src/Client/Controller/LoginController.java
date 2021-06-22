@@ -1,6 +1,8 @@
 package Client.Controller;
 
+import Client.API;
 import Client.PageLoader;
+import common.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -30,13 +32,13 @@ public class LoginController {
             password = passwordBox.getText();
         else
             password = visiblePassword.getText();
-        if (!username.equals("Amin") || !password.equals("0312533039")){
+        User user = API.SignIn(username, password);
+        if (user == null){
             WrongPasswordErrorLabel.setVisible(true);
         }
         else {
             WrongPasswordErrorLabel.setVisible(false);
             PageLoader.load("TimeLine", 340);
-
         }
     }
 

@@ -8,9 +8,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 
 public class DataBase {
-    public static final String FILE_PREFIX = "./db/";
-    public static final String PROFILES_FILE = FILE_PREFIX + "ProfilesDB";
-    public static final String MAILS_FILE =  FILE_PREFIX + "MailDB";
+    public static final String FILE_PREFIX = "./src/Server/Database/";
+    public static final String PROFILES_FILE = FILE_PREFIX + "AccountsDB";
+    public static final String MAILS_FILE =  FILE_PREFIX + "PostDB";
 
 
     private static DataBase ourInstance = new DataBase();

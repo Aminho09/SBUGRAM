@@ -1,5 +1,6 @@
 package Client.Controller;
 
+import Client.API;
 import common.Gender;
 import Client.PageLoader;
 import common.User;
@@ -13,6 +14,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Popup;
 
 import java.io.*;
+
+import static Client.ClientMain.*;
 
 public class SignUpController {
 
@@ -132,10 +135,11 @@ public class SignUpController {
                 && confirmPassword.getLength() != 0 && yearBirthDate.getLength() != 0
                 && monthBirthDate.getLength() != 0 && dayBirthDate.getLength() != 0
                 && confirmPassword.getText().equals(password.getText()) && (symbol && letter && number)){
-            User newUser = new User(firstname.getText(), surname.getText(),
+            currentUser = new User(firstname.getText(), surname.getText(),
                     Integer.parseInt(yearBirthDate.getText()), Integer.parseInt(monthBirthDate.getText()),
                     Integer.parseInt(dayBirthDate.getText()), genders,
                     username.getText(), password.getText(), bytes);
+            API.SignUp(currentUser);
             PageLoader.load("LoginPage");
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "You have successfully signed up!");
             alert.setTitle("SBUGRAM");

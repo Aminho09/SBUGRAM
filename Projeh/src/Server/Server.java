@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class Server {
 
-    public static final int Port = 8080;
+    public static final int Port = 8082;
     public static Map<String, User> allUsers;
     public static Set<Post> allPosts;
 
@@ -25,7 +25,7 @@ public class Server {
             e.printStackTrace();
         }
         while (true){
-            Socket newSocket = null;
+            Socket newSocket;
             try {
                 assert serverSocket != null;
                 newSocket = serverSocket.accept();
