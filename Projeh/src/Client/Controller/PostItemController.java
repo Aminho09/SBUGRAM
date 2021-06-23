@@ -39,9 +39,11 @@ public class PostItemController {
     }
 
     public AnchorPane init() {
-        Image image = new Image(new ByteArrayInputStream(currentUser.getProfileImage()));
-        profileImage.setFill(new ImagePattern(image));
-        username.setText(post.getUser().getUsername());
+        if (post.getUser().getProfileImage() != null) {
+            Image image = new Image(new ByteArrayInputStream(post.getUser().getProfileImage()));
+            profileImage.setFill(new ImagePattern(image));
+        }
+        username.setText(post.getWriter());
         title.setText(post.getTitle());
 
         return root;
