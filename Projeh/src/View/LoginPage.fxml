@@ -41,7 +41,7 @@
       <Label fx:id="WrongPasswordErrorLabel" layoutX="92.0" layoutY="412.0" text="Wrong Username or Password !" textFill="#d70000" translateX="1.0" visible="false" />
       <ImageView fitHeight="132.0" fitWidth="153.0" layoutX="96.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" translateX="1.0">
          <image>
-            <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/src/Client/Controller/images/87390.png" />
+            <Image url="@../Client/Controller/images/87390.png" />
          </image>
       </ImageView>
       <Text fill="#5ce004" layoutX="98.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SBUGRAM" translateX="1.0">
@@ -52,7 +52,7 @@
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0">
                <image>
-                  <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/src/Client/Controller/images/exit_480px.png" />
+                  <Image url="@../Client/Controller/images/exit_480px.png" />
                </image>
             </ImageView>
          </graphic>

@@ -1,13 +1,18 @@
 package Client.Controller;
 
 import Client.API;
+import Client.ClientMain;
 import Client.PageLoader;
 import common.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+
+import static Client.ClientMain.currentUser;
+import static Client.ClientMain.users;
 
 public class LoginController {
 
@@ -38,6 +43,13 @@ public class LoginController {
         }
         else {
             WrongPasswordErrorLabel.setVisible(false);
+            currentUser = user;
+            ClientMain.update();
+            API.getAllPosts(currentUser);
+            for(User user1 : users.values()){
+                API.getMyPosts(user1);
+            }
+            API.getAllUsers(currentUser);
             PageLoader.load("TimeLine", 340);
         }
     }

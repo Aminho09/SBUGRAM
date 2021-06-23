@@ -27,7 +27,7 @@
       <TextField fx:id="confirmPassword" alignment="CENTER" layoutX="53.0" layoutY="498.0" prefHeight="25.0" prefWidth="250.0" promptText="Confirm Password" />
       <ImageView fitHeight="35.0" fitWidth="40.0" layoutX="23.0" layoutY="9.0">
          <image>
-            <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/src/Client/Controller/images/87390.png" />
+            <Image url="@../Client/Controller/images/87390.png" />
          </image>
       </ImageView>
       <Text fill="#5ce004" layoutX="69.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SBUGRAM" wrappingWidth="153.34375">
@@ -47,7 +47,7 @@
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="30.0">
                <image>
-                  <Image url="file:/C:/Users/lenovo/Desktop/Ap projectss/Projeh/src/Client/Controller/images/left_arrow_512px.png" />
+                  <Image url="@../Client/Controller/images/left_arrow_512px.png" />
                </image>
             </ImageView>
          </graphic>
@@ -59,7 +59,7 @@
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0">
                <image>
-                  <Image url="file:/C:/Users/lenovo/Desktop/Ap projectss/Projeh/src/Client/Controller/images/checkmark_96px.png" />
+                  <Image url="@../Client/Controller/images/checkmark_96px.png" />
                </image>
             </ImageView>
          </graphic>

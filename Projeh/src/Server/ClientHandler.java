@@ -31,36 +31,26 @@ public class ClientHandler implements Runnable{
             try{
                 request = (Map<String,Object>) inputStream.readObject();
                 Map<String,Object> answer=null;
-                Command command=(Command) request.get("request");
+                Command command=(Command) request.get("command");
                 switch(command){
                     case SIGN_IN:
                         answer = API.SignIn(request);
                         break;
-//                    case newUsername:
-//                        answer = API.isUsernameValid(request);
-//                        break;
                     case SIGN_UP:
                         answer = API.SignUp(request);
                         break;
-//                    case addPost:
-//                        answer = API.addPost(request);
-//                        break;
-//                    case getPosts:
-//                        answer = API.getPosts(request);
-//                        break;
-//                    case getMyPosts:
-//                        answer = ServerAPI.getMyPosts(request);
-//                        break;
-//                    case getUsers:
-//                        answer = ServerAPI.getUsers(request);
-//                        break;
-                    /*case TRASH_MAIL:
-                        answer = API.trashMail(income);
+                    case POSTING:
+                        answer = API.Posting(request);
                         break;
-                    case READ_MAIL:
-                        answer = API.readMail(income);
+                    case GET_POSTS:
+                        answer = API.getPosts(request);
                         break;
-*/
+                    case GET_MY_POSTS:
+                        answer = API.getMyPosts(request);
+                        break;
+                    case GET_USERS:
+                        answer = API.getUsers(request);
+                        break;
                 }
                 outputStream.writeObject(answer);
                 outputStream.flush();

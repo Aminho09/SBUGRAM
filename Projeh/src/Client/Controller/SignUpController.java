@@ -45,8 +45,7 @@ public class SignUpController {
     private byte[] bytes;
 
     public void initialize() throws IOException {
-        File file = new File("C:\\Users\\lenovo\\Desktop\\Ap projectss\\Projeh\\src\\Client\\Controller" +
-                "\\images\\icons8_user_480px.png");
+        File file = new File("./src/Client/Controller/images/icons8_user_480px.png");
         FileInputStream inputStream = new FileInputStream(file);
         bytes = inputStream.readAllBytes();
         Image image = new Image(new ByteArrayInputStream(bytes));

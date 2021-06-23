@@ -159,4 +159,9 @@ public class User implements Serializable, Comparable {
         else
             return 1;
     }
+
+    @Override
+    public boolean equals(Object user) {
+        return ((User) user).username.equals(this.username);
+    }
 }

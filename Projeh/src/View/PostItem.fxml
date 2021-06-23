@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="600.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="600.0" style="-fx-background-color: #282C34;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <Label fx:id="username" layoutX="96.0" layoutY="12.0" text="username" textAlignment="CENTER" textFill="#5ce004" />
       <Label fx:id="title" alignment="TOP_LEFT" layoutX="96.0" layoutY="37.0" prefHeight="48.0" prefWidth="305.0" text="title" textFill="#5ce004" />
-      <Button fx:id="unlikedButton" layoutX="543.0" layoutY="22.0" mnemonicParsing="false" onAction="#Like" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #202020;">
+      <Button fx:id="unlikedButton" layoutX="543.0" layoutY="22.0" mnemonicParsing="false" onAction="#Like" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #282C34;">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
@@ -19,7 +18,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="likedButton" layoutX="543.0" layoutY="22.0" mnemonicParsing="false" onAction="#Unlike" style="-fx-background-color: #202020;" visible="false">
+      <Button fx:id="likedButton" layoutX="543.0" layoutY="22.0" mnemonicParsing="false" onAction="#Unlike" style="-fx-background-color: #282C34;" visible="false">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
@@ -28,7 +27,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="402.0" layoutY="20.0" mnemonicParsing="false" onAction="#ShowPost" style="-fx-background-color: #202020;">
+      <Button layoutX="402.0" layoutY="20.0" mnemonicParsing="false" onAction="#ShowPost" style="-fx-background-color: #282C34;">
          <graphic>
             <ImageView fitHeight="41.0" fitWidth="42.0">
                <image>
@@ -38,8 +37,8 @@
          </graphic>
       </Button>
       <Label fx:id="likedNumbers" alignment="CENTER" layoutX="564.0" layoutY="59.0" text="0" textFill="#5ce004" />
-      <Circle fx:id="profileImage" fill="DODGERBLUE" layoutX="46.0" layoutY="44.0" radius="37.0" stroke="#52cd00" strokeType="INSIDE" strokeWidth="2.0" />
-      <Button fx:id="rePostBack" layoutX="502.0" layoutY="25.0" mnemonicParsing="false" onAction="#Reposting" prefHeight="35.0" prefWidth="30.0" style="-fx-background-color: #202020;">
+      <Circle fx:id="profileImage" fill="DODGERBLUE" layoutX="46.0" layoutY="44.0" onMouseClicked="#seeProfile" radius="37.0" stroke="#52cd00" strokeType="INSIDE" strokeWidth="2.0" />
+      <Button fx:id="rePostBack" layoutX="502.0" layoutY="25.0" mnemonicParsing="false" onAction="#Reposting" prefHeight="35.0" prefWidth="30.0" style="-fx-background-color: #282C34;">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -48,7 +47,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="rePost" layoutX="502.0" layoutY="25.0" mnemonicParsing="false" onAction="#rePostingBack" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #202020;" visible="false">
+      <Button fx:id="rePost" layoutX="502.0" layoutY="25.0" mnemonicParsing="false" onAction="#rePostingBack" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #282C34;" visible="false">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
@@ -56,7 +55,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="commentBack" layoutX="457.0" layoutY="25.0" mnemonicParsing="false" onAction="#commenting" style="-fx-background-color: #202020;">
+      <Button fx:id="commentBack" layoutX="457.0" layoutY="25.0" mnemonicParsing="false" onAction="#commenting" style="-fx-background-color: #282C34;">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
@@ -64,7 +63,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="comment" layoutX="457.0" layoutY="25.0" mnemonicParsing="false" onAction="#commentingBack" style="-fx-background-color: #202020;" visible="false">
+      <Button fx:id="comment" layoutX="457.0" layoutY="25.0" mnemonicParsing="false" onAction="#commentingBack" style="-fx-background-color: #282C34;" visible="false">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>

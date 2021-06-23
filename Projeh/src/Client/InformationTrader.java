@@ -12,7 +12,7 @@ import java.util.Map;
 public class InformationTrader {
 
     public static String serverAddress = "localhost";
-    public static final int PORT = 8081;
+    public static final int PORT = 8082;
 
     private static boolean isConnected = false;
     public static Socket socket;

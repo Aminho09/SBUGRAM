@@ -8,12 +8,13 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Map;
 import java.util.Set;
+import java.util.Vector;
 
 public class Server {
 
     public static final int Port = 8082;
     public static Map<String, User> allUsers;
-    public static Set<Post> allPosts;
+    public static Vector<Post> allPosts;
 
     public static void main(String[] args) {
         DataBase.getInstance().initializeServer();
@@ -25,7 +26,7 @@ public class Server {
             e.printStackTrace();
         }
         while (true){
-            Socket newSocket;
+            Socket newSocket = null;
             try {
                 assert serverSocket != null;
                 newSocket = serverSocket.accept();

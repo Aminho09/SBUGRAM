@@ -7,6 +7,7 @@ import java.util.Objects;
 
 public class Post implements Serializable, Comparable {
 
+    public static final long serialVersionUID = 9220343759552300634L;
     private String writer;
     private String title;
     private String description;
@@ -18,6 +19,15 @@ public class Post implements Serializable, Comparable {
     private List<User> repostedUsersList = new ArrayList<>();
     private long timeOfPost = Time.getMilli();
     private String timeString = Time.getTime();
+    private User user = new User();
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public String getTitle() {
         return title;
