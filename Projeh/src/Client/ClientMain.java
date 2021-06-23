@@ -23,6 +23,21 @@ public class ClientMain extends Application {
         PageLoader.load("LoginPage");
     }
 
+    public static void update(){
+        if(API.getAllPosts(ClientMain.currentUser) != null){
+            allPosts = new CopyOnWriteArrayList<>(API.getAllPosts(ClientMain.currentUser));
+        }
+        Map<String, User> updateUsers = API.getAllUsers(ClientMain.currentUser);
+        if(updateUsers!=null){
+            users = updateUsers;
+        }
+        for(User user: users.values()){
+            if(API.getAllOfMyPosts(user)!=null){
+                user.getUserPosts().clear();
+                user.getUserPosts().addAll(API.getAllOfMyPosts(user));
+            }
+        }
+    }
 
     public static void main(String[] args) {
         InformationTrader.connectToServer();

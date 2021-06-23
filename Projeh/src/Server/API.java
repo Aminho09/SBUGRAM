@@ -5,8 +5,11 @@ import common.Post;
 import common.User;
 import javafx.geometry.Pos;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class API {
 
@@ -67,5 +70,49 @@ public class API {
         return answer;
     }
 
+    public static Map<String,Object> getPosts(Map<String,Object> request){
+        Map<String,Object> answer = new HashMap<>();
+        answer.put("command", Command.GET_POSTS);
+        List<Post> sent = new ArrayList<>(Server.allPosts);
+        answer.put("posts", sent);
+        User user= (User) request.get("user");
+        return answer;
+    }
 
+    public static Map<String,Object> getMyPosts(Map<String,Object> request){
+        User user = (User) request.get("user");
+        String username = user.getUsername();
+        Map<String,Object> answer = new HashMap<>();
+        answer.put("command", Command.GET_MY_POSTS);
+        List<Post> sent= Server.allUsers.get(username).getUserPosts();
+        answer.put("myPosts", sent);
+        return answer;
+    }
+
+    public static Map<String,Object> getUsers(Map<String,Object> request){
+        User user = (User) request.get("user");
+        String username = user.getUsername();
+        Map<String,Object> answer = new HashMap<>();
+        answer.put("command", Command.GET_USERS);
+        List<User> temp= Server
+                .allUsers
+                .values()
+                .stream()
+                .filter(a -> !a.getUsername().equals(username))
+                .collect(Collectors.toList());
+        List<String> help= Server
+                .allUsers
+                .keySet()
+                .stream()
+                .filter(a -> !a.equals(username))
+                .collect(Collectors.toList());
+        Map<String, User> sent = new HashMap<>();
+        int i=0;
+        for(String s: help){
+            sent.put(s, temp.get(i));
+            i++;
+        }
+        answer.put("users", sent);
+        return answer;
+    }
 }

@@ -38,7 +38,6 @@ public class PageLoader {
         return fxmlLoader.load();
     }
 
-    //load fxmls with already set controllers
     public static void load(String url) throws IOException {
         scene = new Scene(new PageLoader().loadFXML(url));
         stage.setScene(scene);

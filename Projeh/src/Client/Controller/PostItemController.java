@@ -6,13 +6,15 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 import java.io.*;
 import java.nio.file.Paths;
+
+import static Client.ClientMain.currentUser;
+import static Client.ClientMain.currentPost;
 
 public class PostItemController {
     public AnchorPane root;
@@ -36,32 +38,9 @@ public class PostItemController {
     }
 
     public AnchorPane init() {
-        File file;
-        FileInputStream inputStream = null;
-        byte[] bytes;
-        Image image;
-        try {
-            file = new File("C:\\Users\\lenovo\\Desktop\\Ap projectss\\Projeh\\src\\Client\\Controller" +
-                    "\\images\\icons8_user_480px.png");
-            inputStream = new FileInputStream(file);
-            bytes = inputStream.readAllBytes();
-            image = new Image(new ByteArrayInputStream(bytes));
-            profileImage.setFill(new ImagePattern(image));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (post.getWriter().equals("Amin")){
-            try {
-                file = new File("C:\\Users\\lenovo\\Pictures\\20210402_013657.jpg");
-                inputStream = new FileInputStream(file);
-                bytes = inputStream.readAllBytes();
-                image = new Image(new ByteArrayInputStream(bytes));
-                profileImage.setFill(new ImagePattern(image));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        username.setText(post.getWriter());
+        Image image = new Image(new ByteArrayInputStream(currentUser.getProfileImage()));
+        profileImage.setFill(new ImagePattern(image));
+        username.setText(post.getUser().getUsername());
         title.setText(post.getTitle());
 
         return root;
@@ -112,5 +91,9 @@ public class PostItemController {
     public void ShowPost(ActionEvent actionEvent) throws IOException {
         staticPost = post;
         PageLoader.load("ShowDetailsPost");
+    }
+
+    public void seeProfile(ActionEvent actionEvent){
+
     }
 }
