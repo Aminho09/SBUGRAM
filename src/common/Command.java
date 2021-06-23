@@ -1,0 +1,5 @@
+package common;
+
+public enum Command {
+    SIGN_IN, SIGN_UP, POSTING, REPOST, EDIT_PROFILE, LOG_OUT, UNIQUE_USER, GET_POSTS, GET_MY_POSTS, GET_USERS,
+}
