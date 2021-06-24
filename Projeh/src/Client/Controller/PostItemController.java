@@ -1,7 +1,9 @@
 package Client.Controller;
 
 import Client.PageLoader;
+import com.sun.glass.events.MouseEvent;
 import common.Post;
+import common.User;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -32,12 +34,19 @@ public class PostItemController {
     public Label likedNumbers;
     public Label commentNumbers;
     public Label rePostNumbers;
+    public static User postOwner;
     public PostItemController(Post post) throws IOException {
         new PageLoader().load("PostItem", this);
         this.post = post;
+        postOwner = post.getUser();
     }
 
     public AnchorPane init() {
+        if (post.getUser().getProfileImage() != null) {
+            Image image = new Image(new ByteArrayInputStream(post.getUser().getProfileImage()));
+            profileImage.setFill(new ImagePattern(image));
+        }
+        username.setText(post.getWriter());
         Image image = new Image(new ByteArrayInputStream(currentUser.getProfileImage()));
         profileImage.setFill(new ImagePattern(image));
         username.setText(post.getUser().getUsername());
@@ -93,6 +102,12 @@ public class PostItemController {
         PageLoader.load("ShowDetailsPost");
     }
 
+    public void seeProfile(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        if (post.getUser().equals(currentUser)){
+            PageLoader.load("MyProfilePage");
+        }
+        else
+            PageLoader.load("OtherProfilesPage");
     public void seeProfile(ActionEvent actionEvent){
 
     }

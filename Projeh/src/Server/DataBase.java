@@ -4,13 +4,15 @@ import common.Post;
 import common.User;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 
 public class DataBase {
     public static final String FILE_PREFIX = "./src/Server/Database/";
     public static final String PROFILES_FILE = FILE_PREFIX + "AccountsDB";
-    public static final String MAILS_FILE =  FILE_PREFIX + "PostDB";
+    public static final String POSTS_FILE =  FILE_PREFIX + "PostDB";
 
 
     private static DataBase ourInstance = new DataBase();
@@ -35,14 +37,14 @@ public class DataBase {
         }
 
         try {
-            FileInputStream fin = new FileInputStream(DataBase.MAILS_FILE);
+            FileInputStream fin = new FileInputStream(DataBase.POSTS_FILE);
             ObjectInputStream inFromFile = new ObjectInputStream(fin);
-            Server.allPosts = new ConcurrentSkipListSet<>( (ConcurrentSkipListSet<Post>) inFromFile.readObject());
+            Server.allPosts = new Vector<>( (ArrayList<Post>) inFromFile.readObject());
             inFromFile.close();
             fin.close();
         }
         catch(EOFException | StreamCorruptedException e){
-            Server.allPosts = new ConcurrentSkipListSet<>();
+            Server.allPosts = new Vector<>();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -56,9 +58,9 @@ public class DataBase {
             objToFile.close();
             fout.close();
 
-            fout = new FileOutputStream(MAILS_FILE);
+            fout = new FileOutputStream(POSTS_FILE);
             objToFile = new ObjectOutputStream(fout);
-            objToFile.writeObject(Server.allPosts); // writing mails
+            objToFile.writeObject(new ArrayList<>(Server.allPosts)); // writing mails
             objToFile.close();
             fout.close();
 

@@ -39,6 +39,7 @@ public class TimeLineController {
         submittingPost.setWriter(currentUser.getUsername());
         submittingPost.setDescription(description.getText());
         submittingPost.setTitle(title.getText());
+        submittingPost.setUser(currentUser);
         allPosts.add(submittingPost);
         currentUser.getUserPosts().add(submittingPost);
         API.Posting(submittingPost);
