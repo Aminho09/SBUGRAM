@@ -18,6 +18,12 @@ import java.io.IOException;
 import static Client.ClientMain.allPosts;
 import static Client.ClientMain.currentUser;
 import static Client.Controller.PostItemController.postOwner;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.shape.Circle;
+
+import java.io.IOException;
 
 public class OtherProfilesPageController {
     public Circle profileImage;
@@ -38,8 +44,10 @@ public class OtherProfilesPageController {
         followingsCounter.setText(Integer.toString(userProfile.getFollowing().size()));
         userListPost.setItems(FXCollections.observableArrayList(userProfile.getUserPosts()));
         userListPost.setCellFactory(posts -> new PostItem());
-//        System.out.println(userProfile.getUserPosts());
-//        System.out.println(allPosts);
+
+
+    public void initialize() {
+
     }
 
     public void Unfollow(ActionEvent actionEvent) {

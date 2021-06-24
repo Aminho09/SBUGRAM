@@ -39,6 +39,14 @@ public class MyProfilePageController {
     public void Logout(ActionEvent actionEvent) throws IOException {
         currentUser = new User();
         PageLoader.load("LoginPage", 600);
+
+import javafx.event.ActionEvent;
+
+import java.io.IOException;
+
+public class MyProfilePageController {
+    public void Logout(ActionEvent actionEvent) throws IOException {
+        PageLoader.load("LoginPage");
     }
 
     public void EditProfile(ActionEvent actionEvent) {

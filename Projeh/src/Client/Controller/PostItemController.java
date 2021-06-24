@@ -47,6 +47,9 @@ public class PostItemController {
             profileImage.setFill(new ImagePattern(image));
         }
         username.setText(post.getWriter());
+        Image image = new Image(new ByteArrayInputStream(currentUser.getProfileImage()));
+        profileImage.setFill(new ImagePattern(image));
+        username.setText(post.getUser().getUsername());
         title.setText(post.getTitle());
 
         return root;
@@ -99,12 +102,13 @@ public class PostItemController {
         PageLoader.load("ShowDetailsPost");
     }
 
-
     public void seeProfile(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         if (post.getUser().equals(currentUser)){
             PageLoader.load("MyProfilePage");
         }
         else
             PageLoader.load("OtherProfilesPage");
+    public void seeProfile(ActionEvent actionEvent){
+
     }
 }
