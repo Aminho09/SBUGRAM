@@ -1,61 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.shape.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.OtherProfilesPageController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #202020; -fx-control-inner-background:#202020;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.OtherProfilesPageController">
    <children>
-      <ListView layoutX="318.0" prefHeight="600.0" prefWidth="582.0" style="-fx-background-color: #ffffff;" />
-      <Circle fx:id="profileImage" fill="DODGERBLUE" layoutX="158.0" layoutY="117.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="230.0" prefHeight="42.0" prefWidth="264.0" text="username" textFill="#21c500">
+      <ListView fx:id="userListPost" layoutX="282.0" prefHeight="600.0" prefWidth="618.0" style="-fx-background-color: #202020;" />
+      <Circle fx:id="profileImage" fill="DODGERBLUE" layoutX="146.0" layoutY="117.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="230.0" prefHeight="42.0" prefWidth="264.0" text="username" textFill="#21c500">
          <font>
             <Font size="35.0" />
          </font>
       </Label>
-      <Label layoutX="115.0" layoutY="350.0" prefHeight="38.0" prefWidth="108.0" text="followers" textFill="#21c500">
+      <Label layoutX="103.0" layoutY="350.0" prefHeight="38.0" prefWidth="108.0" text="followers" textFill="#21c500">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="138.0" layoutY="300.0" text="posts" textFill="#21c500">
+      <Label alignment="CENTER" layoutX="126.0" layoutY="300.0" text="posts" textFill="#21c500">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="110.0" layoutY="400.0" text="followings" textFill="#21c500">
+      <Label alignment="CENTER" layoutX="98.0" layoutY="400.0" text="followings" textFill="#21c500">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Label fx:id="postsCounter" alignment="CENTER" layoutX="91.0" layoutY="300.0" text="0" textFill="#21c500">
+      <Label fx:id="postsCounter" alignment="CENTER" layoutX="79.0" layoutY="300.0" text="0" textFill="#21c500">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Label fx:id="followingsCounter" alignment="CENTER" layoutX="91.0" layoutY="400.0" text="0" textFill="#21c500">
+      <Label fx:id="followingsCounter" alignment="CENTER" layoutX="79.0" layoutY="400.0" text="0" textFill="#21c500">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Label fx:id="followersCounter" alignment="CENTER" layoutX="91.0" layoutY="350.0" text="0" textFill="#21c500">
+      <Label fx:id="followersCounter" alignment="CENTER" layoutX="79.0" layoutY="350.0" text="0" textFill="#21c500">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
       <Label layoutX="141.0" layoutY="501.0" />
-      <Button fx:id="unfollowingButton" layoutX="2.0" layoutY="452.0" mnemonicParsing="false" onAction="#Follow" prefHeight="75.0" prefWidth="312.0" style="-fx-background-color: #21c500;" text="Follow">
+      <Button fx:id="unfollowingButton" layoutX="2.0" layoutY="452.0" mnemonicParsing="false" onAction="#Follow" prefHeight="75.0" prefWidth="276.0" style="-fx-background-color: #21c500;" text="Follow">
          <font>
             <Font size="35.0" />
          </font>
       </Button>
-      <Button fx:id="followingButton" layoutX="2.0" layoutY="452.0" mnemonicParsing="false" onAction="#Unfollow" prefHeight="75.0" prefWidth="312.0" style="-fx-background-color: #505050;" text="Unfollow" textFill="#21c500" visible="false">
+      <Button fx:id="followingButton" layoutX="2.0" layoutY="452.0" mnemonicParsing="false" onAction="#Unfollow" prefHeight="75.0" prefWidth="276.0" style="-fx-background-color: #505050;" text="Unfollow" textFill="#21c500" visible="false">
          <font>
             <Font size="35.0" />
          </font>

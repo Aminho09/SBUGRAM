@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.shape.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.MyProfilePageController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #202020; -fx-control-inner-background:#202020;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.MyProfilePageController">
    <children>
-      <ListView layoutX="318.0" prefHeight="600.0" prefWidth="582.0" />
-      <Circle fx:id="profileImage" fill="DODGERBLUE" layoutX="151.0" layoutY="127.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="250.0" prefHeight="42.0" prefWidth="264.0" text="username" textFill="#21c500">
+      <ListView fx:id="myListPosts" layoutX="282.0" prefHeight="600.0" prefWidth="618.0" style="-fx-background-color: #202020;" />
+      <Circle fx:id="profileImage" fill="DODGERBLUE" layoutX="142.0" layoutY="127.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="250.0" prefHeight="42.0" prefWidth="264.0" text="username" textFill="#21c500">
          <font>
             <Font size="35.0" />
          </font>
@@ -31,43 +27,43 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="followersCounter" alignment="CENTER" layoutX="90.0" layoutY="362.0" text="0" textFill="#21c500">
+      <Label fx:id="followersCounter" alignment="CENTER" layoutX="81.0" layoutY="362.0" text="0" textFill="#21c500">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Label fx:id="followingsCounter" alignment="CENTER" layoutX="90.0" layoutY="412.0" text="0" textFill="#21c500">
+      <Label fx:id="followingsCounter" alignment="CENTER" layoutX="81.0" layoutY="412.0" text="0" textFill="#21c500">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Label fx:id="postsCounter" alignment="CENTER" layoutX="90.0" layoutY="312.0" text="0" textFill="#21c500">
+      <Label fx:id="postsCounter" alignment="CENTER" layoutX="81.0" layoutY="312.0" text="0" textFill="#21c500">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="109.0" layoutY="412.0" text="followings" textFill="#21c500">
+      <Label alignment="CENTER" layoutX="100.0" layoutY="412.0" text="followings" textFill="#21c500">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="137.0" layoutY="312.0" text="posts" textFill="#21c500">
+      <Label alignment="CENTER" layoutX="128.0" layoutY="312.0" text="posts" textFill="#21c500">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Label layoutX="114.0" layoutY="362.0" prefHeight="38.0" prefWidth="108.0" text="followers" textFill="#21c500">
+      <Label layoutX="105.0" layoutY="362.0" prefHeight="38.0" prefWidth="108.0" text="followers" textFill="#21c500">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Button layoutX="72.0" layoutY="456.0" mnemonicParsing="false" onAction="#EditProfile" style="-fx-background-color: #202020;" text="edit profile" textFill="#21c500">
+      <Button layoutX="63.0" layoutY="456.0" mnemonicParsing="false" onAction="#EditProfile" style="-fx-background-color: #202020;" text="edit profile" textFill="#21c500">
          <font>
             <Font size="26.0" />
          </font>
       </Button>
-      <Line endX="150.0" layoutX="157.0" layoutY="458.0" startX="-150.0" stroke="WHITE" strokeWidth="5.0" />
-      <Button layoutX="92.0" layoutY="505.0" mnemonicParsing="false" onAction="#Logout" prefHeight="56.0" prefWidth="118.0" style="-fx-background-color: #202020;" text="Logout" textFill="#b51c33">
+      <Line endX="120.0" layoutX="157.0" layoutY="458.0" startX="-150.0" stroke="WHITE" strokeWidth="5.0" />
+      <Button layoutX="83.0" layoutY="505.0" mnemonicParsing="false" onAction="#Logout" prefHeight="56.0" prefWidth="118.0" style="-fx-background-color: #202020;" text="Logout" textFill="#b51c33">
          <font>
             <Font size="26.0" />
          </font>
