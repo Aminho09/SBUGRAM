@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="168.0" prefWidth="600.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.ShowDetailsPostController">
+   <children>
+      <Label fx:id="usernameLabel" layoutX="33.0" layoutY="102.0" text="username" textAlignment="CENTER" textFill="#5ce004" />
+      <Label fx:id="titleLabel" alignment="TOP_LEFT" layoutX="125.0" layoutY="11.0" prefHeight="21.0" prefWidth="470.0" style="-fx-background-color: #909090;" text="title" textAlignment="CENTER" textFill="WHITE" />
+      <Label fx:id="descriptionLabel" alignment="TOP_LEFT" layoutX="124.0" layoutY="45.0" prefHeight="69.0" prefWidth="470.0" style="-fx-background-color: #909090;" text="description" textAlignment="CENTER" textFill="WHITE" />
+      <Button layoutX="495.0" layoutY="118.0" mnemonicParsing="false" onAction="#BackToPostsPage" prefHeight="44.0" prefWidth="91.0" style="-fx-background-color: #1F201F;" text="Back" textFill="#5ce004">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="30.0">
+               <image>
+                  <Image url="file:/C:/Users/lenovo/Desktop/Ap%20projectss/Projeh/src/Client/Controller/images/left_arrow_512px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Circle fx:id="profileImage" fill="DODGERBLUE" layoutX="65.0" layoutY="52.0" radius="49.0" stroke="#5cc500" strokeType="INSIDE" strokeWidth="2.0" />
+   </children>
+</AnchorPane>
