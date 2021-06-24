@@ -51,6 +51,9 @@ public class ClientHandler implements Runnable{
                     case GET_USERS:
                         answer = API.getUsers(request);
                         break;
+                    case EDIT_PROFILE:
+                        answer = API.EditProfile(request);
+                        break;
                 }
                 outputStream.writeObject(answer);
                 outputStream.flush();

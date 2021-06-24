@@ -51,7 +51,7 @@
             <Font size="35.0" />
          </font>
       </Button>
-      <Button fx:id="followingButton" layoutX="2.0" layoutY="452.0" mnemonicParsing="false" onAction="#Unfollow" prefHeight="75.0" prefWidth="312.0" style="-fx-background-color: #505050;" text="Unfollow" textFill="#21c500" visible="false">
+      <Button fx:id="followingButton" layoutX="2.0" layoutY="452.0" mnemonicParsing="false" onAction="#Unfollow" prefHeight="75.0" prefWidth="276.0" style="-fx-background-color: #505050;" text="Unfollow" textFill="#21c500" visible="false">
          <font>
             <Font size="35.0" />
          </font>

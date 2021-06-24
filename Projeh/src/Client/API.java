@@ -92,4 +92,14 @@ public class API {
         Map<String,Object> all=getUsers(user);
         return (Map<String, User>) all.get("users");
     }
+
+    public static Boolean EditProfile (User user){
+        Map<String, Object> request = new HashMap<>();
+        request.put("command", Command.EDIT_PROFILE);
+        request.put("user", user);
+        Map<String, Object> answer = InformationTrader.serve(request);
+        if (answer.get("answer") == null)
+            return null;
+        return (Boolean) answer.get("answer");
+    }
 }

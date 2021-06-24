@@ -1,6 +1,7 @@
 package Client.Controller;
 
 import Client.API;
+import Client.ClientMain;
 import common.Gender;
 import Client.PageLoader;
 import common.User;
@@ -40,7 +41,7 @@ public class SignUpController {
     public Label notMatchedPasswordError;
     public Label invalidPasswordError;
     public Label invalidDateError;
-    private boolean selectedGender = false;
+    private boolean selectedGender;
     private Gender genders;
     private byte[] bytes;
 
@@ -139,6 +140,7 @@ public class SignUpController {
                     Integer.parseInt(dayBirthDate.getText()), genders,
                     username.getText(), password.getText(), bytes);
             API.SignUp(currentUser);
+            ClientMain.users.put(currentUser.getUsername(), currentUser);
             PageLoader.load("LoginPage");
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "You have successfully signed up!");
             alert.setTitle("SBUGRAM");
@@ -193,18 +195,18 @@ public class SignUpController {
     public void maleGender(ActionEvent actionEvent) {
         selectedGender = true;
         gender.setText("Male");
-        genders = Gender.MALE;
+        genders = Gender.Male;
     }
 
     public void femaleGender(ActionEvent actionEvent) {
         selectedGender = true;
         gender.setText("Female");
-        genders = Gender.FEMALE;
+        genders = Gender.Female;
     }
 
     public void otherGender(ActionEvent actionEvent) {
         selectedGender = true;
         gender.setText("Other");
-        genders = Gender.OTHER;
+        genders = Gender.Other;
     }
 }

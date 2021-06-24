@@ -12,10 +12,10 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ClientMain extends Application {
 
-    public static Post currentPost=new Post();
-    public static User currentUser=new User();
-    public static List<Post> allPosts=new CopyOnWriteArrayList<>();
-    public static Map<String, User> users=new ConcurrentHashMap<>();
+    public static Post currentPost = new Post();
+    public static User currentUser = new User();
+    public static List<Post> allPosts = new CopyOnWriteArrayList<>();
+    public static Map<String, User> users = new ConcurrentHashMap<>();
 
     @Override
     public void start(Stage primaryStage) throws Exception{

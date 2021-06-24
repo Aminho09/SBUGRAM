@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static Server.Server.allPosts;
+
 public class API {
 
     public static Map<String, Object> SignIn (Map<String, Object> request){
@@ -63,7 +65,8 @@ public class API {
     public static Map<String, Object> Posting (Map<String, Object> request){
         Map<String, Object> answer = new HashMap<>();
         Post newPost = (Post) request.get("post");
-        Server.allPosts.add(newPost);
+        allPosts.add(newPost);
+        Server.allUsers.get(newPost.getUser().getUsername()).getUserPosts().add(newPost);
         DataBase.getInstance().updateDataBase();
         answer.put("command", Command.POSTING);
         answer.put("answer", true);
@@ -73,7 +76,7 @@ public class API {
     public static Map<String,Object> getPosts(Map<String,Object> request){
         Map<String,Object> answer = new HashMap<>();
         answer.put("command", Command.GET_POSTS);
-        List<Post> sent = new ArrayList<>(Server.allPosts);
+        List<Post> sent = new ArrayList<>(allPosts);
         answer.put("posts", sent);
         User user= (User) request.get("user");
         return answer;
@@ -113,6 +116,17 @@ public class API {
             i++;
         }
         answer.put("users", sent);
+        return answer;
+    }
+
+    public static Map<String, Object> EditProfile(Map<String, Object> request){
+        Map<String, Object> answer = new HashMap<>();
+        User user = (User) request.get("user");
+        Server.allUsers.remove(user.getUsername());
+        Server.allUsers.put(user.getUsername(), user);
+        DataBase.getInstance().updateDataBase();
+        answer.put("command", Command.EDIT_PROFILE);
+        answer.put("answer", true);
         return answer;
     }
 }

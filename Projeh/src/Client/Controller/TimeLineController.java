@@ -33,6 +33,7 @@ public class TimeLineController {
         }
         listOfPosts.setItems(FXCollections.observableArrayList(allPosts));
         listOfPosts.setCellFactory(listOfPosts -> new PostItem());
+        System.out.println(currentUser.getUserPosts());
     }
 
     public void post(ActionEvent actionEvent) {
@@ -42,6 +43,7 @@ public class TimeLineController {
         submittingPost.setUser(currentUser);
         allPosts.add(submittingPost);
         currentUser.getUserPosts().add(submittingPost);
+//        System.out.println(currentUser.getUserPosts());
         API.Posting(submittingPost);
         ClientMain.update();
         API.getAllPosts(currentUser);

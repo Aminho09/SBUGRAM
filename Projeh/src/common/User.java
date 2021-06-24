@@ -35,6 +35,20 @@ public class User implements Serializable, Comparable {
 
     public User() {}
 
+    public User(String firstname, String surname, int yearBirth, int monthBirth, int dayBirth,
+                Gender gender, String username, String password, byte[] profileImage, ArrayList<Post> userPosts) {
+        this.firstname = firstname;
+        this.surname = surname;
+        this.yearBirth = yearBirth;
+        this.monthBirth = monthBirth;
+        this.dayBirth = dayBirth;
+        this.gender = gender;
+        this.username = username;
+        this.password = password;
+        this.profileImage = profileImage;
+        this.userPosts = userPosts;
+    }
+
     public void print(){
         System.out.println(Arrays.toString(profileImage));
     }
