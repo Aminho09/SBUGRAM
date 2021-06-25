@@ -30,6 +30,7 @@ public class MyProfilePageController {
         Image image = new Image(new ByteArrayInputStream(currentUser.getProfileImage()));
         profileImage.setFill(new ImagePattern(image));
         usernameLabel.setText(currentUser.getUsername());
+        postsCounter.setText(Integer.toString(currentUser.getUserPosts().size()));
         followersCounter.setText(Integer.toString(currentUser.getFollower().size()));
         followingsCounter.setText(Integer.toString(currentUser.getFollowing().size()));
         System.out.println(currentUser.getUserPosts());

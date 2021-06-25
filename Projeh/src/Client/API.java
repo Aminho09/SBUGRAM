@@ -124,7 +124,8 @@ public class API {
         if (answer.get("answer") == null){
             return null;
         }
-        return (Integer) answer.get("answer");
+        int x = (int) answer.get("answer");
+        return x;
     }
 
     public static Integer Unlike(User user, Post unlikedPost){
@@ -133,9 +134,8 @@ public class API {
         request.put("user", user);
         request.put("unlikedPost", unlikedPost);
         Map<String, Object> answer = InformationTrader.serve(request);
-        if (request.get("answer") == null)
-            return null;
-        return (Integer) answer.get("answer");
+        int x = (int) answer.get("answer");
+        return x;
     }
 
     public static List<User> getLikedMembers(Post post){
@@ -143,8 +143,6 @@ public class API {
         request.put("command", Command.LIKE_MEMBERS);
         request.put("post", post);
         Map<String, Object> answer = InformationTrader.serve(request);
-        if (answer.get("answer") == null)
-            return null;
         return (List<User>) answer.get("answer");
     }
 

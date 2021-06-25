@@ -26,6 +26,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static Client.ClientMain.allPosts;
 import static Client.ClientMain.currentUser;
 
 public class EditProfileController {
@@ -144,6 +145,12 @@ public class EditProfileController {
                     username.getText(), password.getText(), bytes, currentUser.getUserPosts());
             for (Post p : tempPosts) {
                 p.setUser(currentUser);
+            }
+            for (Post p :
+                    allPosts) {
+                if (p.getUser().equals(currentUser)) {
+                    p.setUser(currentUser);
+                }
             }
             API.EditProfile(currentUser);
             ClientMain.users.replace(currentUser.getUsername(), currentUser);

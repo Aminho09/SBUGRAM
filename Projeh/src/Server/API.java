@@ -15,7 +15,7 @@ import static Server.Server.allPosts;
 
 public class API {
 
-    public static Map<String, Object> SignIn (Map<String, Object> request){
+    public static synchronized Map<String, Object> SignIn (Map<String, Object> request){
         Map<String, Object> answer = new HashMap<>();
         String username = (String) request.get("username");
         String password = (String) request.get("password");
@@ -35,7 +35,7 @@ public class API {
         return ans;
     }
 
-    public static Map<String, Object> SignUp (Map<String, Object> request){
+    public static synchronized Map<String, Object> SignUp (Map<String, Object> request){
         Map<String, Object> answer = new HashMap<>();
         User newUser = (User) request.get("user");
         Server.allUsers.put(newUser.getUsername(), newUser);
@@ -45,7 +45,7 @@ public class API {
         return answer;
     }
 
-    public static Map<String, Object> isExistingUsername(Map<String, Object> request){
+    public static synchronized Map<String, Object> isExistingUsername(Map<String, Object> request){
         Map<String, Object> answer = new HashMap<>();
         String username = (String) request.get("username");
         User user = Server.allUsers.get(username);
@@ -55,14 +55,14 @@ public class API {
         return answer;
     }
 
-    public static Map<String, Object> Logout (Map<String, Object> request){
+    public static synchronized Map<String, Object> Logout (Map<String, Object> request){
         Map<String, Object> answer = new HashMap<>();
         answer.put("command", Command.LOG_OUT);
         answer.put("answer", true);
         return answer;
     }
 
-    public static Map<String, Object> Posting (Map<String, Object> request){
+    public static synchronized Map<String, Object> Posting (Map<String, Object> request){
         Map<String, Object> answer = new HashMap<>();
         Post newPost = (Post) request.get("post");
         allPosts.add(newPost);
@@ -73,7 +73,7 @@ public class API {
         return answer;
     }
 
-    public static Map<String,Object> getPosts(Map<String,Object> request){
+    public static synchronized Map<String,Object> getPosts(Map<String,Object> request){
         Map<String,Object> answer = new HashMap<>();
         answer.put("command", Command.GET_POSTS);
         List<Post> sent = new ArrayList<>(allPosts);
@@ -82,7 +82,7 @@ public class API {
         return answer;
     }
 
-    public static Map<String,Object> getMyPosts(Map<String,Object> request){
+    public static synchronized Map<String,Object> getMyPosts(Map<String,Object> request){
         User user = (User) request.get("user");
         String username = user.getUsername();
         Map<String,Object> answer = new HashMap<>();
@@ -92,7 +92,7 @@ public class API {
         return answer;
     }
 
-    public static Map<String,Object> getUsers(Map<String,Object> request){
+    public static synchronized Map<String,Object> getUsers(Map<String,Object> request){
         User user = (User) request.get("user");
         String username = user.getUsername();
         Map<String,Object> answer = new HashMap<>();
@@ -119,29 +119,33 @@ public class API {
         return answer;
     }
 
-    public static Map<String, Object> EditProfile(Map<String, Object> request){
+    public static synchronized Map<String, Object> EditProfile(Map<String, Object> request){
         Map<String, Object> answer = new HashMap<>();
         User user = (User) request.get("user");
+        ArrayList<Post> tempPosts = user.getUserPosts();
         Server.allUsers.remove(user.getUsername());
         Server.allUsers.put(user.getUsername(), user);
+        for (Post p : tempPosts) {
+            p.setUser(user);
+        }
         DataBase.getInstance().updateDataBase();
         answer.put("command", Command.EDIT_PROFILE);
         answer.put("answer", true);
         return answer;
     }
 
-    public static Map<String, Object> Like(Map<String, Object> request){
+    public static synchronized Map<String, Object> Like(Map<String, Object> request){
         Map<String, Object> answer = new HashMap<>();
         User user = (User) request.get("user");
         Post likedPost = (Post) request.get("likedPost");
         int likedNumber = 0;
         for (Post p : allPosts) {
             if (p.equals(likedPost))
-                p.getLikedUsersList().add(user);
+                p.getLikedUsersList().add(user.getUsername());
         }
         for (Post p : Server.allUsers.get(likedPost.getUser().getUsername()).getUserPosts()) {
             if (p.equals(likedPost)){
-                p.getLikedUsersList().add(user);
+                p.getLikedUsersList().add(user.getUsername());
                 likedNumber = p.getLikedUsersList().size();
             }
         }
@@ -151,18 +155,18 @@ public class API {
         return answer;
     }
 
-    public static Map<String, Object> Unlike(Map<String, Object> request){
+    public static synchronized Map<String, Object> Unlike(Map<String, Object> request){
         Map<String, Object> answer = new HashMap<>();
         User user = (User) request.get("user");
         Post unlikedPost = (Post) request.get("unlikedPost");
         int likedNumber = 0;
         for (Post p : allPosts) {
             if (p.equals(unlikedPost))
-                p.getLikedUsersList().remove(user);
+                p.getLikedUsersList().remove(user.getUsername());
         }
         for (Post p : Server.allUsers.get(unlikedPost.getUser().getUsername()).getUserPosts()) {
             if (p.equals(unlikedPost)){
-                p.getLikedUsersList().remove(user);
+                p.getLikedUsersList().remove(user.getUsername());
                 likedNumber = p.getLikedUsersList().size();
             }
         }
@@ -172,7 +176,7 @@ public class API {
         return answer;
     }
 
-    public static Map<String, Object> getLikedMembers(Map<String, Object> request){
+    public static synchronized Map<String, Object> getLikedMembers(Map<String, Object> request){
         Map<String, Object> answer = new HashMap<>();
         Post post = (Post) request.get("post");
         for(Post p: allPosts){
@@ -180,13 +184,13 @@ public class API {
                 post=p;
             }
         }
-        List<User> likedUsersList = post.getLikedUsersList();
+        List<String> likedUsersList = new ArrayList<>();
         answer.put("command", Command.LIKE_MEMBERS);
         answer.put("answer", likedUsersList);
         return answer;
     }
 
-    public static Map<String, Object> LikeRepostComment_Numbers(Map<String, Object> request){
+    public static synchronized Map<String, Object> LikeRepostComment_Numbers(Map<String, Object> request){
         Map<String, Object> answer = new HashMap<>();
         Post post = (Post) request.get("LRC");
         String LRC = post.getLikes() + "/" + post.getRepost() + "/" + post.getComment();

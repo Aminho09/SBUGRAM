@@ -17,8 +17,7 @@ import java.io.*;
 import java.nio.file.Paths;
 import java.util.Objects;
 
-import static Client.ClientMain.currentUser;
-import static Client.ClientMain.currentPost;
+import static Client.ClientMain.*;
 
 public class PostItemController {
     public AnchorPane root;
@@ -50,13 +49,15 @@ public class PostItemController {
             profileImage.setFill(new ImagePattern(image));
         }
         String [] LRC = API.LikeRepostComment_Numbers(post).split("/");
-        likedNumbers.setText(LRC[0]);
+        likedNumbers.setText(post.getLikedUsersList().size()+"");
         rePostNumbers.setText(LRC[1]);
         commentNumbers.setText(LRC[2]);
-        for (User user : post.getLikedUsersList()) {
-            if (user.equals(currentUser)){
+        for (String user : post.getLikedUsersList()) {
+            if (user.equals(currentUser.getUsername())){
                 likedButton.setVisible(true);
+                likedButton.toFront();
                 unlikedButton.setVisible(false);
+                unlikedButton.toBack();
             }
 
         }
@@ -68,16 +69,21 @@ public class PostItemController {
 
     public void Like(ActionEvent actionEvent){
         likedNum = API.like(currentUser, post);
+        System.out.println(likedNum);
         System.out.println(post.getLikedUsersList());
         likedButton.setVisible(true);
+        likedButton.toFront();
         unlikedButton.setVisible(false);
+        unlikedButton.toBack();
         likedNumbers.setText(Integer.toString(likedNum));
     }
 
     public void Unlike(ActionEvent actionEvent) {
         likedNum = API.Unlike(currentUser, post);
         likedButton.setVisible(false);
+        likedButton.toBack();
         unlikedButton.setVisible(true);
+        unlikedButton.toFront();
         likedNumbers.setText(Integer.toString(likedNum));
     }
 
