@@ -34,6 +34,7 @@ public class OtherProfilesPageController {
         Image image = new Image(new ByteArrayInputStream(userProfile.getProfileImage()));
         profileImage.setFill(new ImagePattern(image));
         usernameLabel.setText(userProfile.getUsername());
+        postsCounter.setText(Integer.toString(userProfile.getUserPosts().size()));
         followersCounter.setText(Integer.toString(userProfile.getFollower().size()));
         followingsCounter.setText(Integer.toString(userProfile.getFollowing().size()));
         userListPost.setItems(FXCollections.observableArrayList(userProfile.getUserPosts()));

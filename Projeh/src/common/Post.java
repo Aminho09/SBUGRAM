@@ -14,9 +14,9 @@ public class Post implements Serializable, Comparable {
     private long likes = 0;
     private long comment = 0;
     private long repost = 0;
-    private List<User> likedUsersList = new ArrayList<>();
-    private List<User> commentedUsersList = new ArrayList<>();
-    private List<User> repostedUsersList = new ArrayList<>();
+    private List<String> likedUsersList = new ArrayList<>();
+    private List<String> commentedUsersList = new ArrayList<>();
+    private List<String> repostedUsersList = new ArrayList<>();
     private long timeOfPost = Time.getMilli();
     private String timeString = Time.getTime();
     private User user = new User();
@@ -53,11 +53,11 @@ public class Post implements Serializable, Comparable {
         return writer;
     }
 
-    public List<User> getLikedUsersList() {
+    public List<String> getLikedUsersList() {
         return likedUsersList;
     }
 
-    public void setLikedUsersList(List<User> likedUsersList) {
+    public void setLikedUsersList(List<String> likedUsersList) {
         this.likedUsersList = likedUsersList;
     }
 
@@ -85,19 +85,19 @@ public class Post implements Serializable, Comparable {
         return repost;
     }
 
-    public List<User> getCommentedUsersList() {
+    public List<String> getCommentedUsersList() {
         return commentedUsersList;
     }
 
-    public List<User> getRepostedUsersList() {
+    public List<String> getRepostedUsersList() {
         return repostedUsersList;
     }
 
-    public void setCommentedUsersList(List<User> commentedUsersList) {
+    public void setCommentedUsersList(List<String> commentedUsersList) {
         this.commentedUsersList = commentedUsersList;
     }
 
-    public void setRepostedUsersList(List<User> repostedUsersList) {
+    public void setRepostedUsersList(List<String> repostedUsersList) {
         this.repostedUsersList = repostedUsersList;
     }
 
