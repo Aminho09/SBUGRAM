@@ -1,5 +1,6 @@
 package Client.Controller;
 
+import Client.API;
 import Client.PageLoader;
 import common.Post;
 import common.User;
@@ -37,6 +38,7 @@ public class MyProfilePageController {
     }
 
     public void Logout(ActionEvent actionEvent) throws IOException {
+        API.Logout(currentUser);
         currentUser = new User();
         PageLoader.load("LoginPage", 600);
     }

@@ -1,5 +1,6 @@
 package Client.Controller;
 
+import Client.API;
 import Client.PageLoader;
 import com.sun.glass.events.MouseEvent;
 import common.Post;
@@ -14,6 +15,7 @@ import javafx.scene.shape.Circle;
 
 import java.io.*;
 import java.nio.file.Paths;
+import java.util.Objects;
 
 import static Client.ClientMain.currentUser;
 import static Client.ClientMain.currentPost;
@@ -30,6 +32,7 @@ public class PostItemController {
     public Button commentBack;
     public Button comment;
     Post post;
+    private int likedNum = 0 , repostedNum = 0, commentedNum = 0;
     static Post staticPost;
     public Label likedNumbers;
     public Label commentNumbers;
@@ -46,6 +49,17 @@ public class PostItemController {
             Image image = new Image(new ByteArrayInputStream(post.getUser().getProfileImage()));
             profileImage.setFill(new ImagePattern(image));
         }
+        String [] LRC = API.LikeRepostComment_Numbers(post).split("/");
+        likedNumbers.setText(LRC[0]);
+        rePostNumbers.setText(LRC[1]);
+        commentNumbers.setText(LRC[2]);
+        for (User user : post.getLikedUsersList()) {
+            if (user.equals(currentUser)){
+                likedButton.setVisible(true);
+                unlikedButton.setVisible(false);
+            }
+
+        }
         username.setText(post.getWriter());
         title.setText(post.getTitle());
 
@@ -53,17 +67,18 @@ public class PostItemController {
     }
 
     public void Like(ActionEvent actionEvent){
+        likedNum = API.like(currentUser, post);
+        System.out.println(post.getLikedUsersList());
         likedButton.setVisible(true);
         unlikedButton.setVisible(false);
-        post.setLikes(post.getLikes() + 1);
-        likedNumbers.setText(Long.toString(post.getLikes()));
+        likedNumbers.setText(Integer.toString(likedNum));
     }
 
     public void Unlike(ActionEvent actionEvent) {
+        likedNum = API.Unlike(currentUser, post);
         likedButton.setVisible(false);
         unlikedButton.setVisible(true);
-        post.setLikes(post.getLikes() - 1);
-        likedNumbers.setText(Long.toString(post.getLikes()));
+        likedNumbers.setText(Integer.toString(likedNum));
     }
 
     public void Reposting(ActionEvent actionEvent){

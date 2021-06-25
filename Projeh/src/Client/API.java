@@ -4,10 +4,12 @@ package Client;
 import common.Command;
 import common.Post;
 import common.User;
+import javafx.geometry.Pos;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class API {
 
@@ -32,7 +34,7 @@ public class API {
         return (Boolean) answer.get("answer");
     }
 
-    public static Boolean isValidName (String username){
+    public static Boolean isExistingUsername(String username){
         Map<String, Object> request = new HashMap<>();
         request.put("command", Command.UNIQUE_USER);
         request.put("username", username);
@@ -101,5 +103,58 @@ public class API {
         if (answer.get("answer") == null)
             return null;
         return (Boolean) answer.get("answer");
+    }
+
+    public static Boolean Logout(User user){
+        Map<String,Object> request = new HashMap<>();
+        request.put("command", Command.LOG_OUT);
+        request.put("user", user);
+        Map<String,Object> answer = InformationTrader.serve(request);
+        if (answer.get("answer") == null)
+            return null;
+        return (Boolean) answer.get("answer");
+    }
+
+    public static Integer like(User user, Post likedPost){
+        Map<String,Object> request = new HashMap<>();
+        request.put("command", Command.LIKE);
+        request.put("user", user);
+        request.put("likedPost", likedPost);
+        Map<String,Object> answer = InformationTrader.serve(request);
+        if (answer.get("answer") == null){
+            return null;
+        }
+        return (Integer) answer.get("answer");
+    }
+
+    public static Integer Unlike(User user, Post unlikedPost){
+        Map<String, Object> request = new HashMap<>();
+        request.put("command", Command.UNLIKE);
+        request.put("user", user);
+        request.put("unlikedPost", unlikedPost);
+        Map<String, Object> answer = InformationTrader.serve(request);
+        if (request.get("answer") == null)
+            return null;
+        return (Integer) answer.get("answer");
+    }
+
+    public static List<User> getLikedMembers(Post post){
+        Map<String, Object> request = new HashMap<>();
+        request.put("command", Command.LIKE_MEMBERS);
+        request.put("post", post);
+        Map<String, Object> answer = InformationTrader.serve(request);
+        if (answer.get("answer") == null)
+            return null;
+        return (List<User>) answer.get("answer");
+    }
+
+    public static String LikeRepostComment_Numbers(Post post){
+        Map<String, Object> request = new HashMap<>();
+        request.put("command", Command.LIKE_REPOST_COMMENT_NUMBERS);
+        request.put("LRC", post);
+        Map<String, Object> answer = InformationTrader.serve(request);
+        if (answer.get("answer") == null)
+            return null;
+        return (String) answer.get("answer");
     }
 }
