@@ -1,5 +1,6 @@
 package Client.Controller;
 
+import Client.API;
 import Client.PageLoader;
 import common.Comment;
 import common.Post;
@@ -26,13 +27,16 @@ public class CommentPageController {
     public Label titleLabel;
     public Label descriptionLabel;
     public Circle profileImage;
-    public ListView<Comment> commentsList;
+    public ListView<Comment> commentsList = new ListView<>();
     public List<Comment> allComments = new ArrayList<>();
     public TextField commentText;
     public Comment comment = new Comment();
     Post commentingPost = PostItemController.staticPost;
 
     public void initialize(){
+        allComments = API.getComments(PostItemController.staticPost);
+        commentsList.setItems(FXCollections.observableArrayList(allComments));
+        commentsList.setCellFactory(comment -> new CommentItem());
         Image image = new Image(new ByteArrayInputStream(commentingPost.getUser().getProfileImage()));
         profileImage.setFill(new ImagePattern(image));
         usernameLabel.setText(commentingPost.getWriter());
@@ -47,6 +51,7 @@ public class CommentPageController {
         comment.setText(commentText.getText());
         comment.setWriter(currentUser);
         comment.setCommentedPost(PostItemController.staticPost);
+        allComments = API.Comment(currentUser, commentingPost, comment);
         assert allComments != null;
         allComments.add(comment);
         commentsList.setItems(FXCollections.observableArrayList(allComments));

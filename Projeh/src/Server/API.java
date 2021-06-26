@@ -1,6 +1,7 @@
 package Server;
 
 import common.Command;
+import common.Comment;
 import common.Post;
 import common.User;
 import javafx.geometry.Pos;
@@ -196,6 +197,39 @@ public class API {
         String LRC = post.getLikes() + "/" + post.getRepost() + "/" + post.getComment();
         answer.put("command", Command.LIKE_REPOST_COMMENT_NUMBERS);
         answer.put("answer", LRC);
+        return answer;
+    }
+
+    public static synchronized Map<String, Object> Comment(Map<String, Object> request){
+        Map<String, Object> answer = new HashMap<>();
+        User user = (User) request.get("user");
+        Post post = (Post) request.get("post");
+        Comment comment = (Comment) request.get("comment");
+        List<Comment> commentList = new ArrayList<>();
+        for (Post p :
+                Server.allUsers.get(post.getUser().getUsername()).getUserPosts()) {
+            if (post.equals(p)) {
+                p.getCommentedUsersList().add(post.getUser().getUsername());
+                p.getAllComments().add(comment);
+                p.setComment(p.getComment() + 1);
+                commentList = p.getAllComments();
+            }
+        }
+        DataBase.getInstance().updateDataBase();
+        answer.put("command", Command.COMMENT);
+        answer.put("answer", commentList);
+        return answer;
+    }
+
+    public static synchronized Map<String, Object> getComments(Map<String, Object> request){
+        Map<String, Object> answer = new HashMap<>();
+        Post post = (Post) request.get("post");
+        for (Post p : allPosts) {
+            if (post.equals(p))
+                post = p;
+        }
+        answer.put("command", Command.COMMENT_NUMBERS);
+        answer.put("answer", post.getAllComments());
         return answer;
     }
 }

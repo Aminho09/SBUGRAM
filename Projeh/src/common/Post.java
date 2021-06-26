@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Post implements Serializable, Comparable {
 
@@ -14,12 +15,21 @@ public class Post implements Serializable, Comparable {
     private long likes = 0;
     private long comment = 0;
     private long repost = 0;
-    private List<String> likedUsersList = new ArrayList<>();
-    private List<String> commentedUsersList = new ArrayList<>();
-    private List<String> repostedUsersList = new ArrayList<>();
+    private List<String> likedUsersList = new CopyOnWriteArrayList<>();
+    private List<String> commentedUsersList = new CopyOnWriteArrayList<>();
+    private List<Comment> allComments = new CopyOnWriteArrayList<>();
+    private List<String> repostedUsersList = new CopyOnWriteArrayList<>();
     private long timeOfPost = Time.getMilli();
     private String timeString = Time.getTime();
     private User user = new User();
+
+    public void setAllComments(List<Comment> allComments) {
+        this.allComments = allComments;
+    }
+
+    public List<Comment> getAllComments() {
+        return allComments;
+    }
 
     public User getUser() {
         return user;

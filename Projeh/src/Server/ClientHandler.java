@@ -46,6 +46,8 @@ public class ClientHandler implements Runnable{
                     case UNLIKE -> answer = API.Unlike(request);
                     case LIKE_REPOST_COMMENT_NUMBERS -> answer = API.LikeRepostComment_Numbers(request);
                     case LIKE_MEMBERS -> answer = API.getLikedMembers(request);
+                    case COMMENT -> answer = API.Comment(request);
+                    case COMMENT_NUMBERS -> answer = API.getComments(request);
                 }
                 outputStream.writeObject(answer);
                 outputStream.flush();

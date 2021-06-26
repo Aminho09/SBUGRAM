@@ -28,7 +28,6 @@ public class PostItemController {
     public Button unlikedButton;
     public Button rePostBack;
     public Button rePost;
-    public Button commentBack;
     public Button comment;
     Post post;
     private int likedNum = 0 , repostedNum = 0, commentedNum = 0;
@@ -50,8 +49,8 @@ public class PostItemController {
         }
         String [] LRC = API.LikeRepostComment_Numbers(post).split("/");
         likedNumbers.setText(post.getLikedUsersList().size()+"");
-        rePostNumbers.setText(LRC[1]);
-        commentNumbers.setText(LRC[2]);
+//        rePostNumbers.setText();
+        commentNumbers.setText(post.getCommentedUsersList().size()+"");
         for (String user : post.getLikedUsersList()) {
             if (user.equals(currentUser.getUsername())){
                 likedButton.setVisible(true);
@@ -60,14 +59,7 @@ public class PostItemController {
                 unlikedButton.toBack();
             }
         }
-        for (String user: post.getCommentedUsersList()) {
-            if (user.equals(currentUser.getUsername())){
-                comment.setVisible(true);
-                comment.toFront();
-                commentBack.setVisible(false);
-                commentBack.toBack();
-            }
-        }
+
         for (String user : post.getRepostedUsersList()) {
             if (user.equals(currentUser.getUsername())) {
                 rePost.setVisible(true);
@@ -113,6 +105,7 @@ public class PostItemController {
 
     public void ShowPost(ActionEvent actionEvent) throws IOException {
         staticPost = post;
+
         PageLoader.load("ShowDetailsPost");
     }
 

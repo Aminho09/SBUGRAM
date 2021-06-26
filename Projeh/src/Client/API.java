@@ -2,6 +2,7 @@ package Client;
 
 
 import common.Command;
+import common.Comment;
 import common.Post;
 import common.User;
 import javafx.geometry.Pos;
@@ -154,5 +155,27 @@ public class API {
         if (answer.get("answer") == null)
             return null;
         return (String) answer.get("answer");
+    }
+
+    public static List<Comment> Comment (User user, Post post, Comment comment){
+        Map<String, Object> request = new HashMap<>();
+        request.put("command", Command.COMMENT);
+        request.put("user", user);
+        request.put("post", post);
+        request.put("comment", comment);
+        Map<String, Object> answer = InformationTrader.serve(request);
+        if (answer.get("answer") == null)
+            return null;
+        return (List<Comment>) answer.get("answer");
+    }
+
+    public static List<Comment> getComments (Post post){
+        Map<String, Object> request = new HashMap<>();
+        request.put("command",Command.COMMENT_NUMBERS);
+        request.put("post", post);
+        Map<String, Object> answer = InformationTrader.serve(request);
+        if (answer.get("answer") == null)
+            return null;
+        return (List<Comment>) answer.get("answer");
     }
 }
