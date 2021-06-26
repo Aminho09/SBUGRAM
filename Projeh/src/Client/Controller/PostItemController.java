@@ -59,7 +59,22 @@ public class PostItemController {
                 unlikedButton.setVisible(false);
                 unlikedButton.toBack();
             }
-
+        }
+        for (String user: post.getCommentedUsersList()) {
+            if (user.equals(currentUser.getUsername())){
+                comment.setVisible(true);
+                comment.toFront();
+                commentBack.setVisible(false);
+                commentBack.toBack();
+            }
+        }
+        for (String user : post.getRepostedUsersList()) {
+            if (user.equals(currentUser.getUsername())) {
+                rePost.setVisible(true);
+                rePost.toFront();
+                rePostBack.setVisible(false);
+                rePostBack.toBack();
+            }
         }
         username.setText(post.getWriter());
         title.setText(post.getTitle());
@@ -88,38 +103,18 @@ public class PostItemController {
     }
 
     public void Reposting(ActionEvent actionEvent){
-        rePost.setVisible(true);
-        rePostBack.setVisible(false);
-        post.setRepost(post.getRepost() + 1);
-        rePostNumbers.setText(Long.toString(post.getRepost()));
+
     }
 
-    public void rePostingBack(ActionEvent actionEvent){
-        rePost.setVisible(false);
-        rePostBack.setVisible(true);
-        post.setRepost(post.getRepost() - 1);
-        rePostNumbers.setText(Long.toString(post.getRepost()));
-    }
-
-    public void commenting(ActionEvent actionEvent){
-        comment.setVisible(true);
-        commentBack.setVisible(false);
-        post.setComment(post.getComment() + 1);
-        commentNumbers.setText(Long.toString(post.getComment()));
-    }
-
-    public void commentingBack(ActionEvent actionEvent){
-        comment.setVisible(false);
-        commentBack.setVisible(true);
-        post.setComment(post.getComment() - 1);
-        commentNumbers.setText(Long.toString(post.getComment()));
+    public void commenting(ActionEvent actionEvent) throws IOException {
+        staticPost = post;
+        PageLoader.load("CommentPage");
     }
 
     public void ShowPost(ActionEvent actionEvent) throws IOException {
         staticPost = post;
         PageLoader.load("ShowDetailsPost");
     }
-
 
     public void seeProfile(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         if (post.getUser().equals(currentUser)){
