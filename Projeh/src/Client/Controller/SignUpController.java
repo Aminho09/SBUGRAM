@@ -44,9 +44,9 @@ public class SignUpController {
     private boolean selectedGender;
     private Gender genders;
     private byte[] bytes;
-
+    private File file;
     public void initialize() throws IOException {
-        File file = new File("./src/Client/Controller/images/icons8_user_480px.png");
+        file = new File("./src/Client/Controller/images/icons8_user_480px.png");
         FileInputStream inputStream = new FileInputStream(file);
         bytes = inputStream.readAllBytes();
         Image image = new Image(new ByteArrayInputStream(bytes));
@@ -55,9 +55,9 @@ public class SignUpController {
 
     public void setProfilePhoto(ActionEvent actionEvent) throws IOException {
         FileChooser uploadImage = new FileChooser();
-        File selectedFile = uploadImage.showOpenDialog(new Popup());
-        if (selectedFile != null){
-            FileInputStream inputStream = new FileInputStream(selectedFile);
+        file = uploadImage.showOpenDialog(new Popup());
+        if (file != null){
+            FileInputStream inputStream = new FileInputStream(file);
             bytes = inputStream.readAllBytes();
             Image image = new Image(new ByteArrayInputStream(bytes));
             profilePhoto.setFill(new ImagePattern(image));
@@ -139,6 +139,7 @@ public class SignUpController {
                     Integer.parseInt(yearBirthDate.getText()), Integer.parseInt(monthBirthDate.getText()),
                     Integer.parseInt(dayBirthDate.getText()), genders,
                     username.getText(), password.getText(), bytes);
+            currentUser.setProfilePath(file.getAbsolutePath());
             API.SignUp(currentUser);
             ClientMain.users.put(currentUser.getUsername(), currentUser);
             PageLoader.load("LoginPage");

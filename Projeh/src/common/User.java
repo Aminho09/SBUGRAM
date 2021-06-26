@@ -1,10 +1,13 @@
 package common;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class User implements Serializable, Comparable {
+    @Serial
+    private static final long serialVersionUID = 3518446596450281660L;
     private String firstname;
     private String surname;
     private int yearBirth;
@@ -17,6 +20,7 @@ public class User implements Serializable, Comparable {
     private ArrayList<Post> userPosts = new ArrayList<>();
     private ArrayList<User> follower = new ArrayList<>();
     private ArrayList<User> following = new ArrayList<>();
+    private String profilePath;
     private long timeOfUser = Time.getMilli();
     private String timeString = Time.getTime();
 
@@ -47,6 +51,14 @@ public class User implements Serializable, Comparable {
         this.password = password;
         this.profileImage = profileImage;
         this.userPosts = userPosts;
+    }
+
+    public String getProfilePath() {
+        return profilePath;
+    }
+
+    public void setProfilePath(String profilePath) {
+        this.profilePath = profilePath;
     }
 
     public void print(){

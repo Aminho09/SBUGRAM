@@ -51,4 +51,8 @@ public class MyProfilePageController {
     public void Back(ActionEvent actionEvent) throws IOException {
         PageLoader.load("TimeLine");
     }
+
+    public void Refresh(ActionEvent actionEvent) throws IOException {
+        PageLoader.load("MyProfilePage");
+    }
 }

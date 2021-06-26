@@ -41,6 +41,7 @@ public class CommentPageController {
         profileImage.setFill(new ImagePattern(image));
         usernameLabel.setText(commentingPost.getWriter());
         titleLabel.setText(commentingPost.getTitle());
+        descriptionLabel.setText(commentingPost.getDescription());
     }
 
     public void BackToPostsPage(ActionEvent actionEvent) throws IOException {
@@ -59,5 +60,9 @@ public class CommentPageController {
         comment = new Comment();
         comment.setText("");
         commentText.clear();
+    }
+
+    public void Refresh(ListView.EditEvent<Comment> commentEditEvent) throws IOException {
+        PageLoader.load("CommentPage");
     }
 }

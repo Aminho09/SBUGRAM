@@ -50,6 +50,7 @@ public class LoginController {
                 API.getMyPosts(user1);
             }
             API.getAllUsers(currentUser);
+//            currentUser.print();
             PageLoader.load("TimeLine", 340);
         }
     }
@@ -69,13 +70,13 @@ public class LoginController {
 
     public void Exit(ActionEvent actionEvent) {
         System.exit(0);
-
     }
 
     public void SignUp(ActionEvent actionEvent) throws IOException {
         PageLoader.load("SignUp");
     }
 
-    public void ForgetPassword(ActionEvent actionEvent) {
+    public void ForgetPassword(ActionEvent actionEvent) throws IOException {
+        PageLoader.load("ForgotPassword");
     }
 }

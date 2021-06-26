@@ -60,8 +60,8 @@ public class API {
         request .put("command", Command.GET_POSTS);
         request .put("posts", ClientMain.allPosts);
         request .put("user", user);
-        Map<String,Object> received = InformationTrader.serve(request);
-        return received;
+        Map<String,Object> answer = InformationTrader.serve(request);
+        return answer;
     }
 
     public static List<Post> getAllPosts(User user){
@@ -70,11 +70,11 @@ public class API {
     }
 
     public static Map<String,Object> getMyPosts(User user){
-        Map<String,Object> toSend=new HashMap<>();
-        toSend.put("command", Command.GET_MY_POSTS);
-        toSend.put("user", user);
-        Map<String,Object> received = InformationTrader.serve(toSend);
-        return received;
+        Map<String,Object> request=new HashMap<>();
+        request.put("command", Command.GET_MY_POSTS);
+        request.put("user", user);
+        Map<String,Object> answer = InformationTrader.serve(request);
+        return answer;
     }
 
     public static List<Post> getAllOfMyPosts(User user){
@@ -83,12 +83,12 @@ public class API {
     }
 
     public static Map<String, Object> getUsers(User user){
-        Map<String,Object> toSend=new HashMap<>();
-        toSend.put("command", Command.GET_USERS);
-        toSend.put("user", user);
-        toSend.put("users", ClientMain.users);
-        Map<String,Object> received = InformationTrader.serve(toSend);
-        return received;
+        Map<String,Object> request = new HashMap<>();
+        request.put("command", Command.GET_USERS);
+        request.put("user", user);
+        request.put("users", ClientMain.users);
+        Map<String,Object> answer = InformationTrader.serve(request);
+        return answer;
     }
 
     public static Map<String, User> getAllUsers(User user){
@@ -177,5 +177,93 @@ public class API {
         if (answer.get("answer") == null)
             return null;
         return (List<Comment>) answer.get("answer");
+    }
+
+    public static String Follow (User user1, User user2){
+        Map<String, Object> request = new HashMap<>();
+        request.put("command", Command.FOLLOW);
+        request.put("following", user1);
+        request.put("followed", user2);
+        Map<String, Object> answer = InformationTrader.serve(request);
+        if (answer.get("answer") == null)
+            return null;
+        return (String) answer.get("answer");
+    }
+
+    public static String Unfollow (User user1, User user2){
+        Map<String, Object> request = new HashMap<>();
+        request.put("command", Command.UNFOLLOW);
+        request.put("unfollowing", user1);
+        request.put("unfollowed", user2);
+        Map<String, Object> answer = InformationTrader.serve(request);
+        if (answer.get("answer") == null)
+            return null;
+        return (String) answer.get("answer");
+    }
+
+    public static List<String> getFollowerMembers (User user){
+        Map<String, Object> request = new HashMap<>();
+        request.put("command", Command.GET_FOLLOWER_MEMBERS);
+        request.put("user", user);
+        Map<String, Object> answer = InformationTrader.serve(request);
+        if (answer.get("answer") == null)
+            return null;
+        return (List<String>) answer.get("answer");
+    }
+
+    public static List<String> getFollowingsMembers (User user){
+        Map<String, Object> request = new HashMap<>();
+        request.put("command", Command.GET_FOLLOWING_MEMBERS);
+        request.put("user", user);
+        Map<String, Object> answer = InformationTrader.serve(request);
+        if (answer.get("answer") == null)
+            return null;
+        return (List<String>) answer.get("answer");
+    }
+
+    public static String getInfo(User userViewer, User profileOwner){
+        Map<String, Object> request = new HashMap<>();
+        request.put("command", Command.GET_INFO);
+        request.put("userViewer", userViewer);
+        request.put("profileOwner", profileOwner);
+        Map<String, Object> answer = InformationTrader.serve(request);
+        if (answer.get("answer") == null)
+            return null;
+        return (String) answer.get("answer");
+    }
+
+    public static String ForgotPassword(String firstname, String surname, String username){
+        Map<String, Object> request = new HashMap<>();
+        request.put("command", Command.FORGOT_PASSWORD);
+        request.put("firstname", firstname);
+        request.put("surname", surname);
+        request.put("username", username);
+        Map<String, Object> answer = InformationTrader.serve(request);
+        if (answer.get("answer") == null)
+            return "";
+        return (String) answer.get("answer");
+    }
+
+    public static Integer Repost(User user, Post post){
+        Map<String,Object> request=new HashMap<>();
+        request.put("command", Command.REPOST);
+        request.put("user", user);
+        request.put("repost", post);
+        Map<String,Object> answer = InformationTrader.serve(request);
+        if (answer.get("answer") == null){
+            return null;
+        }
+        return (Integer) answer.get("answer");
+    }
+
+    public static List<String> getRepostMembers(Post post){
+        Map<String,Object> request = new HashMap<>();
+        request.put("command", Command.GET_REPOST_MEMBERS);
+        request.put("post", post);
+        Map<String,Object> answer = InformationTrader.serve(request);
+        if (answer.get("answer") == null){
+            return null;
+        }
+        return (List<String>) answer.get("answer");
     }
 }

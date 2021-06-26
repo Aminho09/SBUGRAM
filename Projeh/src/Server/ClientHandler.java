@@ -48,6 +48,12 @@ public class ClientHandler implements Runnable{
                     case LIKE_MEMBERS -> answer = API.getLikedMembers(request);
                     case COMMENT -> answer = API.Comment(request);
                     case COMMENT_NUMBERS -> answer = API.getComments(request);
+                    case FOLLOW -> answer = API.Follow(request);
+                    case UNFOLLOW -> answer = API.Unfollow(request);
+                    case GET_FOLLOWER_MEMBERS -> answer = API.getFollowerMembers(request);
+                    case GET_FOLLOWING_MEMBERS -> answer = API.getFollowingsMembers(request);
+                    case GET_INFO -> answer = API.getInfo(request);
+                    case FORGOT_PASSWORD -> answer = API.ForgotPassword(request);
                 }
                 outputStream.writeObject(answer);
                 outputStream.flush();

@@ -6,13 +6,11 @@ import common.Post;
 import common.User;
 import javafx.geometry.Pos;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static Server.Server.allPosts;
+import static Server.Server.allUsers;
 
 public class API {
 
@@ -231,5 +229,106 @@ public class API {
         answer.put("command", Command.COMMENT_NUMBERS);
         answer.put("answer", post.getAllComments());
         return answer;
+    }
+
+    public static synchronized Map<String, Object> Follow (Map<String, Object> request){
+        Map<String, Object> answer = new HashMap<>();
+        User user1 = (User) request.get("following");
+        User user2 = (User) request.get("followed");
+        Server.allUsers.get(user1.getUsername()).getFollowing().add(user2);
+        Server.allUsers.get(user2.getUsername()).getFollower().add(user1);
+        DataBase.getInstance().updateDataBase();
+        String following_follower = Server.allUsers.get(user1.getUsername()).getFollowing().size()
+                + "/" + Server.allUsers.get(user2.getUsername()).getFollower().size();
+        answer.put("command", Command.FOLLOW);
+        answer.put("answer", following_follower);
+        return answer;
+    }
+
+    public static synchronized Map<String, Object> Unfollow(Map<String, Object> request){
+        Map<String, Object> answer = new HashMap<>();
+        User user1 = (User) request.get("unfollowing");
+        User user2 = (User) request.get("unfollowed");
+        Server.allUsers.get(user1.getUsername()).getFollowing().remove(user2);
+        Server.allUsers.get(user2.getUsername()).getFollower().remove(user1);
+        DataBase.getInstance().updateDataBase();
+        String following_follower = Server.allUsers.get(user1.getUsername()).getFollowing().size()
+                + "/" + Server.allUsers.get(user2.getUsername()).getFollower().size();
+        answer.put("command", Command.UNFOLLOW);
+        answer.put("answer", following_follower);
+        return answer;
+    }
+
+    public static synchronized Map<String, Object> getFollowerMembers(Map<String, Object> request){
+        Map<String, Object> answer = new HashMap<>();
+        User user = (User) request.get("user");
+        List<User> userList =Server.allUsers.get(user.getUsername()).getFollower();
+        List<String> usernameList = new ArrayList<>();
+        for (User u : userList) {
+            usernameList.add(u.getUsername());
+        }
+        answer.put("command", Command.GET_FOLLOWER_MEMBERS);
+        answer.put("answer", usernameList);
+        return answer;
+    }
+
+    public static synchronized Map<String, Object> getFollowingsMembers(Map<String, Object> request){
+        Map<String, Object> answer = new HashMap<>();
+        User user = (User) request.get("user");
+        List<User> userList =Server.allUsers.get(user.getUsername()).getFollowing();
+        List<String> usernameList = new ArrayList<>();
+        for (User u : userList) {
+            usernameList.add(u.getUsername());
+        }
+        answer.put("command", Command.GET_FOLLOWING_MEMBERS);
+        answer.put("answer", usernameList);
+        return answer;
+    }
+
+    public static synchronized Map<String, Object> getInfo(Map<String, Object> request){
+        Map<String, Object> answer = new HashMap<>();
+        User userViewer = (User) request.get("userViewer");
+        User profileOwner = (User) request.get("profileOwner");
+        String Info = Server.allUsers.get(profileOwner.getUsername()).getFollowing().size() + "/"
+                + Server.allUsers.get(profileOwner.getUsername()).getFollower().size() + "/"
+                + Server.allUsers.get(profileOwner.getUsername()).getUserPosts().size();
+        answer.put("command", Command.GET_INFO);
+        answer.put("answer", Info);
+        return answer;
+    }
+    
+    public static synchronized Map<String, Object> ForgotPassword(Map<String, Object> request){
+        Map<String, Object> answer = new HashMap<>();
+        String firstname = (String) request.get("firstname");
+        String surname = (String) request.get("surname");
+        String username = (String) request.get("username");
+        String password = "";
+        for (User user : allUsers.values()) {
+            if (user.getUsername().equals(username) && user.getFirstname().equals(firstname)
+                    && user.getSurname().equals(surname)) {
+                password = user.getPassword();
+            }
+        }
+        answer.put("command", Command.FORGOT_PASSWORD);
+        answer.put("answer", password);
+        return answer;
+    }
+
+    public static synchronized Map<String, Object> Repost(Map<String, Object> request){
+        Map<String, Object> answer = new HashMap<>();
+        Post post = (Post) request.get("post");
+        User user = (User) request.get("user");
+        int repostNumber = 0;
+        for(Post p: allUsers.get(post.getUser().getUsername()).getUserPosts()){
+            if(p.equals(post)){
+                p.getRepostedUsersList().add(user.getUsername());
+                allUsers.get(user.getUsername()).getUserPosts().add(p);
+                repostNumber = p.getRepostedUsersList().size();
+            }
+        }
+    }
+
+    public static synchronized Map<String, Object> getRepostMembers(Map<String, Object> request){
+
     }
 }

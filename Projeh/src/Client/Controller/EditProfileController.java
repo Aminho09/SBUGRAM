@@ -54,6 +54,7 @@ public class EditProfileController {
     private boolean selectedGender = false;
     private Gender genders;
     byte[] bytes;
+    File selectedFile;
 
     public void initialize(){
         Image image = new Image(new ByteArrayInputStream(currentUser.getProfileImage()));
@@ -146,11 +147,13 @@ public class EditProfileController {
             for (Post p : tempPosts) {
                 p.setUser(currentUser);
             }
-            for (Post p :
-                    allPosts) {
+            for (Post p : allPosts) {
                 if (p.getUser().equals(currentUser)) {
                     p.setUser(currentUser);
                 }
+            }
+            if (selectedFile != null){
+                currentUser.setProfilePath(selectedFile.getAbsolutePath());
             }
             API.EditProfile(currentUser);
             ClientMain.users.replace(currentUser.getUsername(), currentUser);
@@ -168,7 +171,7 @@ public class EditProfileController {
 
     public void setProfilePhoto(ActionEvent actionEvent) throws IOException {
         FileChooser uploadImage = new FileChooser();
-        File selectedFile = uploadImage.showOpenDialog(new Popup());
+        selectedFile = uploadImage.showOpenDialog(new Popup());
         if (selectedFile != null){
             FileInputStream inputStream = new FileInputStream(selectedFile);
             bytes = inputStream.readAllBytes();
