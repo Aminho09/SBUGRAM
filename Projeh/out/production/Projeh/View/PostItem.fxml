@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="600.0" style="-fx-background-color: #282C34;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="600.0" style="-fx-background-color: #282C34;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="username" layoutX="96.0" layoutY="12.0" text="username" textAlignment="CENTER" textFill="#5ce004" />
       <Label fx:id="title" alignment="TOP_LEFT" layoutX="96.0" layoutY="37.0" prefHeight="48.0" prefWidth="305.0" text="title" textFill="#5ce004" />
@@ -47,7 +47,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="rePost" layoutX="502.0" layoutY="25.0" mnemonicParsing="false" onAction="#rePostingBack" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #282C34;" visible="false">
+      <Button fx:id="rePost" layoutX="502.0" layoutY="25.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #282C34;" visible="false">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
@@ -60,14 +60,6 @@
             <ImageView fitHeight="30.0" fitWidth="30.0">
                <image>
                   <Image url="@../Client/Controller/images/team_96px.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
-      <Button fx:id="comment" layoutX="457.0" layoutY="25.0" mnemonicParsing="false" onAction="#commentingBack" style="-fx-background-color: #282C34;" visible="false">
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="30.0">
-               <image>
-                  <Image url="@../Client/Controller/images/team__96px.png" />
                </image>
             </ImageView>
          </graphic></Button>

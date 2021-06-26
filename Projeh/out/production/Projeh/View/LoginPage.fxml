@@ -17,9 +17,9 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.LoginController">
    <children>
-      <TextField fx:id="usernameBox" layoutX="98.0" layoutY="222.0" promptText="username" translateX="1.0" />
-      <PasswordField fx:id="passwordBox" layoutX="98.0" layoutY="282.0" promptText="password" translateX="1.0" />
-      <TextField fx:id="visiblePassword" layoutX="99.0" layoutY="282.0" promptText="password" visible="false" />
+      <TextField fx:id="usernameBox" layoutX="98.0" layoutY="222.0" promptText="username" style="-fx-background-color: #282C34; -fx-text-inner-color: #dddddd;" translateX="1.0" />
+      <PasswordField fx:id="passwordBox" layoutX="98.0" layoutY="282.0" promptText="password" style="-fx-background-color: #282C34;" translateX="1.0" />
+      <TextField fx:id="visiblePassword" layoutX="99.0" layoutY="282.0" promptText="password" style="-fx-background-color: #282C34; -fx-text-inner-color: #dddddd;" visible="false" />
       <CheckBox fx:id="showPasswordBox" layoutX="226.0" layoutY="285.0" mnemonicParsing="false" onAction="#showPassword" />
       <Button fx:id="signInBox" cache="true" contentDisplay="TOP" ellipsisString="" graphicTextGap="5.0" layoutX="119.0" layoutY="348.0" mnemonicParsing="false" onAction="#SignIn" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #1CCE01;" text="Sign-in" textAlignment="CENTER" textOverrun="CLIP" translateX="1.0">
          <font>
@@ -29,7 +29,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Button>
-      <Button cancelButton="true" layoutX="84.0" layoutY="448.0" mnemonicParsing="false" onAction="#ForgetPassword" style="-fx-background-color: #202020;" text="forgot my password" textFill="#1ba100" translateX="1.0">
+      <Button cancelButton="true" layoutX="84.0" layoutY="458.0" mnemonicParsing="false" onAction="#ForgetPassword" style="-fx-background-color: #202020;" text="forgot my password" textFill="#1ba100" translateX="1.0">
          <font>
             <Font size="18.0" />
          </font></Button>

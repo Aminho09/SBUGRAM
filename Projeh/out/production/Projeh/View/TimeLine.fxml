@@ -1,18 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.TimeLineController">
+<Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.TimeLineController">
    <children>
-      <ListView fx:id="listOfPosts" layoutX="282.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="618.0" style="-fx-background-color: #202020; -fx-control-inner-background: #202020;"/>
-      <Button layoutX="143.0" layoutY="416.0" mnemonicParsing="false" onAction="#post" text="Post" />
-      <TextArea fx:id="description" layoutX="67.0" layoutY="140.0" prefHeight="200.0" prefWidth="200.0" promptText="description" />
-      <TextField fx:id="title" layoutX="74.0" layoutY="69.0" promptText="title" />
-      <Button layoutX="135.0" layoutY="526.0" mnemonicParsing="false" onAction="#Exit" text="Exit" />
+      <ListView fx:id="listOfPosts" layoutX="282.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="618.0" style="-fx-background-color: #202020; -fx-control-inner-background: #202020;" />
+      <Button layoutX="94.0" layoutY="350.0" mnemonicParsing="false" onAction="#post" style="-fx-background-color: #202020;" text="Post" textFill="#5ce004">
+         <graphic>
+            <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Client/Controller/images/post_480px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <TextArea fx:id="description" layoutX="27.0" layoutY="141.0" prefHeight="200.0" prefWidth="243.0" promptText="description" text="&#10;" />
+      <TextField fx:id="title" layoutX="27.0" layoutY="73.0" prefHeight="35.0" prefWidth="243.0" promptText="title" />
+      <Button layoutX="29.0" layoutY="524.0" mnemonicParsing="false" onAction="#Exit" style="-fx-background-color: #202020;" text="Exit" textFill="#5ce004">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Client/Controller/images/exit_480px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button layoutX="133.0" layoutY="526.0" mnemonicParsing="false" onAction="#Logout" style="-fx-background-color: #202020;" text="Logout" textFill="#ff3939">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Client/Controller/images/power_off_button_480px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="79.0" layoutY="481.0" mnemonicParsing="false" onAction="#refresh" style="-fx-background-color: #202020;" text="Refresh" textFill="#5ce004">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Client/Controller/images/refresh_480px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="25.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Client/Controller/images/87390.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="70.0" layoutY="12.0" text="SBUGRAM" textFill="#21c500">
+         <font>
+            <Font name="Centaur" size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="32.0" layoutY="405.0" mnemonicParsing="false" onAction="#SearchButton" style="-fx-background-color: #202020;">
+         <graphic>
+            <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Client/Controller/images/find_user_male_480px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TextField fx:id="searchMembers" layoutX="98.0" layoutY="415.0" prefHeight="35.0" prefWidth="149.0" promptText="search by username" style="-fx-background-color: #282C34;" />
+      <Label fx:id="notExistedMember" layoutX="67.0" layoutY="458.0" text="Member doesn't exist!" textFill="#ff3939" visible="false">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

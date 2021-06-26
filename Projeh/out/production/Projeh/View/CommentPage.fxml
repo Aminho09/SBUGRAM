@@ -1,26 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.CommentPageController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #202020; -fx-control-inner-background: #202020;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.CommentPageController">
    <children>
-      <AnchorPane layoutY="-1.0" prefHeight="129.0" prefWidth="900.0" style="-fx-background-color: #202020;">
+      <AnchorPane layoutY="47.0" prefHeight="129.0" prefWidth="900.0" style="-fx-background-color: #202020;">
          <children>
             <Label fx:id="usernameLabel" layoutX="33.0" layoutY="102.0" text="username" textAlignment="CENTER" textFill="#5ce004" />
-            <Label fx:id="titleLabel" alignment="TOP_LEFT" layoutX="125.0" layoutY="11.0" prefHeight="21.0" prefWidth="767.0" style="-fx-background-color: #282C34;" text="title" textAlignment="CENTER" textFill="WHITE" />
-            <Label fx:id="descriptionLabel" alignment="TOP_LEFT" layoutX="124.0" layoutY="45.0" prefHeight="69.0" prefWidth="767.0" style="-fx-background-color: #282C34;" text="description" textAlignment="CENTER" textFill="WHITE" />
+            <Label fx:id="titleLabel" alignment="TOP_LEFT" layoutX="125.0" layoutY="11.0" prefHeight="21.0" prefWidth="767.0" style="-fx-background-color: #282C34;" textAlignment="CENTER" textFill="WHITE" />
+            <Label fx:id="descriptionLabel" alignment="TOP_LEFT" layoutX="124.0" layoutY="45.0" prefHeight="69.0" prefWidth="767.0" style="-fx-background-color: #282C34;" textAlignment="CENTER" textFill="WHITE" />
             <Circle fx:id="profileImage" fill="DODGERBLUE" layoutX="65.0" layoutY="52.0" radius="49.0" stroke="#5cc500" strokeType="INSIDE" strokeWidth="2.0" />
          </children>
       </AnchorPane>
-      <Button layoutX="8.0" layoutY="550.0" mnemonicParsing="false" onAction="#BackToPostsPage" prefHeight="44.0" prefWidth="91.0" style="-fx-background-color: #1F201F;" text="Back" textFill="#5ce004">
+      <ListView fx:id="commentsList" layoutX="6.0" layoutY="180.0" onEditStart="#Refresh" prefHeight="362.0" prefWidth="888.0" style="-fx-background-color: #282C34;" />
+      <TextField fx:id="commentText" layoutX="97.0" layoutY="550.0" prefHeight="44.0" prefWidth="736.0" promptText="add your comment" style="-fx-background-color: #282C34;" />
+      <Button layoutX="834.0" layoutY="545.0" mnemonicParsing="false" onAction="#commentButton" style="-fx-background-color: #202020;">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0">
+               <image>
+                  <Image url="@../Client/Controller/images/paper_plane_512px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="771.0" layoutY="6.0" mnemonicParsing="false" style="-fx-background-color: #202020;" text="Refresh" textFill="#5ce004">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Client/Controller/images/refresh_480px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="6.0" layoutY="550.0" mnemonicParsing="false" onAction="#BackToPostsPage" prefHeight="44.0" prefWidth="91.0" style="-fx-background-color: #1F201F;" text="Back" textFill="#5ce004">
          <font>
             <Font size="16.0" />
          </font>
@@ -32,16 +51,15 @@
             </ImageView>
          </graphic>
       </Button>
-      <ListView fx:id="commentsList" layoutX="6.0" layoutY="139.0" prefHeight="403.0" prefWidth="888.0" style="-fx-background-color: #282C34;" />
-      <TextField fx:id="commentText" layoutX="105.0" layoutY="550.0" prefHeight="44.0" prefWidth="728.0" promptText="add your comment" style="-fx-background-color: #282C34;" />
-      <Button layoutX="834.0" layoutY="545.0" mnemonicParsing="false" onAction="#commentButton" style="-fx-background-color: #202020;">
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="40.0">
-               <image>
-                  <Image url="@../Client/Controller/images/paper_plane_512px.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
+      <Label layoutX="70.0" layoutY="12.0" text="SBUGRAM" textFill="#21c500">
+         <font>
+            <Font name="Centaur" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="25.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Client/Controller/images/87390.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
