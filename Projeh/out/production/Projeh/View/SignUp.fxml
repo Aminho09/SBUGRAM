@@ -74,5 +74,6 @@
       <Label fx:id="notMatchedPasswordError" layoutX="67.0" layoutY="534.0" text="Those passwords didn’t match. Try again." textFill="RED" visible="false" />
       <Label fx:id="invalidPasswordError" layoutX="83.0" layoutY="476.0" text="Your password is invalid. Try again." textFill="RED" visible="false" />
       <Label fx:id="invalidDateError" layoutX="114.0" layoutY="311.0" text="Please enter a valid date" textFill="RED" visible="false" />
+      <Label fx:id="existingUsernameError" layoutX="94.0" layoutY="419.0" text="This username has already taken!" textFill="RED" visible="false" />
    </children>
 </Pane>

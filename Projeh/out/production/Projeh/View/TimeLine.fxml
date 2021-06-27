@@ -75,7 +75,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <TextField fx:id="searchMembers" layoutX="98.0" layoutY="415.0" prefHeight="35.0" prefWidth="149.0" promptText="search by username" style="-fx-background-color: #282C34;" />
+      <TextField fx:id="searchMembers" layoutX="98.0" layoutY="415.0" prefHeight="35.0" prefWidth="149.0" promptText="search by username" style="-fx-background-color: #282C34; fx-text-inner-color-: #dddddd;" />
       <Label fx:id="notExistedMember" layoutX="67.0" layoutY="458.0" text="Member doesn't exist!" textFill="#ff3939" visible="false">
          <font>
             <Font size="15.0" />
