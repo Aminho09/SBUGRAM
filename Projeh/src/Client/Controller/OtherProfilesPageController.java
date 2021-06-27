@@ -75,5 +75,6 @@ public class OtherProfilesPageController {
 
     public void Refresh(ActionEvent actionEvent) throws IOException {
         PageLoader.load("OtherProfilesPage");
+        initialize();
     }
 }

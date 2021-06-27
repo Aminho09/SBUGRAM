@@ -54,5 +54,6 @@ public class MyProfilePageController {
 
     public void Refresh(ActionEvent actionEvent) throws IOException {
         PageLoader.load("MyProfilePage");
+        initialize();
     }
 }

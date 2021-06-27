@@ -316,7 +316,7 @@ public class API {
 
     public static synchronized Map<String, Object> Repost(Map<String, Object> request){
         Map<String, Object> answer = new HashMap<>();
-        Post post = (Post) request.get("post");
+        Post post = (Post) request.get("repost");
         User user = (User) request.get("user");
         int repostNumber = 0;
         for(Post p: allUsers.get(post.getUser().getUsername()).getUserPosts()){
@@ -326,9 +326,24 @@ public class API {
                 repostNumber = p.getRepostedUsersList().size();
             }
         }
+        DataBase.getInstance().updateDataBase();
+        answer.put("command", Command.REPOST);
+        answer.put("answer", repostNumber);
+        return answer;
     }
 
     public static synchronized Map<String, Object> getRepostMembers(Map<String, Object> request){
-
+        Map<String, Object> answer = new HashMap<>();
+        Post post = (Post) request.get("post");
+        for(Post p: allPosts){
+            if(p.equals(post)){
+                post=p;
+            }
+        }
+        List<String> list = post.getRepostedUsersList();
+        DataBase.getInstance().updateDataBase();
+        answer.put("command", Command.GET_REPOST_MEMBERS);
+        answer.put("answer", list);
+        return answer;
     }
 }

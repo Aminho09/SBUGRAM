@@ -41,6 +41,7 @@ public class SignUpController {
     public Label notMatchedPasswordError;
     public Label invalidPasswordError;
     public Label invalidDateError;
+    public Label existingUsernameError;
     private boolean selectedGender;
     private Gender genders;
     private byte[] bytes;
@@ -79,6 +80,7 @@ public class SignUpController {
         invalidPasswordError.setVisible(false);
         notMatchedPasswordError.setVisible(false);
         invalidDateError.setVisible(false);
+        existingUsernameError.setVisible(false);
         if (!(confirmPassword.getText().equals(password.getText()))
                 && password.getLength() >= 8 && confirmPassword.getLength() >= 8){
             notMatchedPasswordError.setVisible(true);
@@ -94,6 +96,9 @@ public class SignUpController {
         }
         if (surname.getLength() == 0) {
             surnameNullError.setVisible(true);
+        }
+        if (API.isExistingUsername(username.getText())){
+            existingUsernameError.setVisible(true);
         }
         if (yearBirthDate.getLength() == 0 || dayBirthDate.getLength() == 0 || monthBirthDate.getLength() == 0) {
             birthDateNullError.setVisible(true);
@@ -134,6 +139,7 @@ public class SignUpController {
                 && username.getLength() != 0 && password.getLength() != 0
                 && confirmPassword.getLength() != 0 && yearBirthDate.getLength() != 0
                 && monthBirthDate.getLength() != 0 && dayBirthDate.getLength() != 0
+                && !API.isExistingUsername(username.getText())
                 && confirmPassword.getText().equals(password.getText()) && (symbol && letter && number)){
             currentUser = new User(firstname.getText(), surname.getText(),
                     Integer.parseInt(yearBirthDate.getText()), Integer.parseInt(monthBirthDate.getText()),

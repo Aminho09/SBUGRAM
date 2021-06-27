@@ -7,6 +7,7 @@ import common.Post;
 import common.User;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import Client.ClientMain.*;
 
@@ -34,32 +36,45 @@ public class TimeLineController {
     public void initialize (){
         ClientMain.update();
         API.getAllUsers(currentUser);
-        for(User user: users.values()){
-            API.getAllOfMyPosts(user);
+        API.getAllPosts(currentUser);
+        for(User u: users.values()){
+            API.getAllOfMyPosts(u);
         }
-        List<String> followerMembers = API.getFollowerMembers(currentUser);
-        List<Post> posts = API.getAllPosts(currentUser);
+        List<Post> posts=API.getAllPosts(currentUser);
+        List<String> followingsMembers = API.getFollowingsMembers(currentUser);
         Set<Post> postSet = new HashSet<>();
-        for (Post p : posts) {
-            assert followerMembers != null;
-            if (followerMembers.contains(p.getUser().getUsername())){
+        List<Post> postList = new ArrayList<>();
+        for(Post p: posts){
+            assert followingsMembers != null;
+            if(followingsMembers.contains(p.getUser().getUsername())) {
                 postSet.add(p);
             }
             if(currentUser.getUsername().equals(p.getUser().getUsername())){
                 postSet.add(p);
             }
+            List<String> pu = p.getPublisher().stream()
+                    .map(a-> a.getUsername())
+                    .collect(Collectors.toList());
+            for(String s: pu){
+                if(followingsMembers.contains(s)){
+                    postSet.add(p);
+                }
+                if(currentUser.getUsername().equals(s)){
+                    postSet.add(p);
+                }
+            }
         }
-        listOfPosts.setItems(FXCollections.observableArrayList(allPosts));
-        listOfPosts.setCellFactory(listOfPosts -> new PostItem());
-        ClientMain.update();
-
+        postList = postSet.stream().sorted().collect(Collectors.toList());
+        listOfPosts.setItems(FXCollections.observableArrayList(postList));
+        listOfPosts.setCellFactory(PostList -> new PostItem());
     }
 
-    public void post(ActionEvent actionEvent) {
+    public void post(ActionEvent actionEvent) throws IOException {
         submittingPost.setWriter(currentUser.getUsername());
         submittingPost.setDescription(description.getText());
         submittingPost.setTitle(title.getText());
         submittingPost.setUser(currentUser);
+        submittingPost.getPublisher().add(currentUser);
         allPosts.add(submittingPost);
         currentUser.getUserPosts().add(submittingPost);
         API.Posting(submittingPost);
@@ -68,11 +83,12 @@ public class TimeLineController {
         for(User user: users.values()){
             API.getMyPosts(user);
         }
-        listOfPosts.setItems(FXCollections.observableArrayList(allPosts));
-        listOfPosts.setCellFactory(postList -> new PostItem());
+//        listOfPosts.setItems(FXCollections.observableArrayList(allPosts));
+//        listOfPosts.setCellFactory(postList -> new PostItem());
         submittingPost = new Post();
         description.setText("");
         title.setText("");
+        initialize();
     }
 
     public void Exit(ActionEvent actionEvent) {
@@ -86,51 +102,8 @@ public class TimeLineController {
     }
 
     public void refresh (ActionEvent actionEvent) throws IOException {
-        ClientMain.update();
-        API.getAllPosts(currentUser);
-        for(User u: users.values()){
-            API.getMyPosts(u);
-        }
-        API.getAllUsers(currentUser);
-        PageLoader.load("TimeLine");
-        List<User> acc=new ArrayList<>();
-
-        List<Post> posts = API.getAllPosts(currentUser);
-        Set<Post> t=new HashSet<>();
-        for(Post p: posts){
-
-            if(currentUser.getUsername().equals(p.getUser().getUsername())){
-                t.add(p);
-            }
-//            List<String> pu=p.getPublisher().stream()
-//                    .map(a-> a.getUsername())
-//                    .collect(Collectors.toList());
-//            for(String s: pu){
-//                if(f.contains(s)){
-//                    assert m != null;
-//                    if (!(m.contains(p.getUser().getUsername()))) {
-//                        t.add(p);
-//                    }
-//                }
-//                if(currentUser.getUsername().equals(s)){
-//                    t.add(p);
-//                }
-//            }
-        }
-//        API.getTimeline(currentUser);
-        listOfPosts.setItems(FXCollections.observableArrayList(t));
-        listOfPosts.setCellFactory(PostList -> new PostItem());
-//        myPosts.setItems(FXCollections.observableArrayList(currentUser.getPosts()));
-//        myPosts.setCellFactory(myPosts -> new PostItem());
-//        String temp=API.getNumbers(currentUser, currentUser);
-//        following.setText(String.valueOf(Integer.parseInt(temp.substring(0, temp.indexOf("|")))));
-//        follower.setText(String.valueOf(Integer.parseInt(temp.substring(temp.indexOf("|")+1, temp.lastIndexOf("|")))));
-//        post.setText(String.valueOf(Integer.parseInt(temp.substring(temp.lastIndexOf("|")+1))));
-//        List<User> shown= users.values().stream()
-//                .filter(a-> ((API.getMassaged(currentUser).contains(a.getUsername()))&&(!(blockers.contains(a.getUsername())))))
-//                .collect(Collectors.toList());
-//        Massages.setItems(FXCollections.observableArrayList(shown));
-//        Massages.setCellFactory(Massages -> new DirectUserItem());
+        new PageLoader().load("Timeline");
+        initialize();
     }
 
     public void SearchButton(ActionEvent actionEvent) throws IOException {

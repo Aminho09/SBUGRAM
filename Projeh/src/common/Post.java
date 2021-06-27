@@ -19,12 +19,21 @@ public class Post implements Serializable, Comparable {
     private List<String> commentedUsersList = new CopyOnWriteArrayList<>();
     private List<Comment> allComments = new CopyOnWriteArrayList<>();
     private List<String> repostedUsersList = new CopyOnWriteArrayList<>();
+    private List<User> publisher=new CopyOnWriteArrayList<>();
     private long timeOfPost = Time.getMilli();
     private String timeString = Time.getTime();
     private User user = new User();
 
     public void setAllComments(List<Comment> allComments) {
         this.allComments = allComments;
+    }
+
+    public void setPublisher(List<User> publisher) {
+        this.publisher = publisher;
+    }
+
+    public List<User> getPublisher() {
+        return publisher;
     }
 
     public List<Comment> getAllComments() {

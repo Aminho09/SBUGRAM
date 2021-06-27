@@ -54,6 +54,8 @@ public class ClientHandler implements Runnable{
                     case GET_FOLLOWING_MEMBERS -> answer = API.getFollowingsMembers(request);
                     case GET_INFO -> answer = API.getInfo(request);
                     case FORGOT_PASSWORD -> answer = API.ForgotPassword(request);
+                    case REPOST -> answer = API.Repost(request);
+                    case GET_REPOST_MEMBERS -> answer = API.getRepostMembers(request);
                 }
                 outputStream.writeObject(answer);
                 outputStream.flush();

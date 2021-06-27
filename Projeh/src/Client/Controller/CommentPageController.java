@@ -64,5 +64,6 @@ public class CommentPageController {
 
     public void Refresh(ListView.EditEvent<Comment> commentEditEvent) throws IOException {
         PageLoader.load("CommentPage");
+        initialize();
     }
 }
