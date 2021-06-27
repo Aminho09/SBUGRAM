@@ -38,7 +38,7 @@ public class EditProfileController {
     public TextField monthBirthDate;
     public TextField dayBirthDate;
     public MenuButton gender;
-    public TextField username;
+    public Label username;
     public TextField password;
     public TextField confirmPassword;
     public Label firstnameNullError;
@@ -105,9 +105,6 @@ public class EditProfileController {
         if (!selectedGender){
             notSelectedGenderError.setVisible(true);
         }
-        if (username.getLength() == 0) {
-            usernameNullError.setVisible(true);
-        }
         if (password.getLength() < 8 && password.getLength() != 0) {
             invalidPasswordError.setVisible(true);
         }
@@ -135,10 +132,10 @@ public class EditProfileController {
             invalidDateError.setVisible(true);
         }
         else if (selectedGender && firstname.getLength() != 0 && surname.getLength() != 0
-                && username.getLength() != 0 && password.getLength() != 0
-                && confirmPassword.getLength() != 0 && yearBirthDate.getLength() != 0
-                && monthBirthDate.getLength() != 0 && dayBirthDate.getLength() != 0
-                && confirmPassword.getText().equals(password.getText()) && (symbol && letter && number)){
+                && password.getLength() != 0 && confirmPassword.getLength() != 0
+                && yearBirthDate.getLength() != 0 && monthBirthDate.getLength() != 0
+                && dayBirthDate.getLength() != 0 && confirmPassword.getText().equals(password.getText())
+                && (symbol && letter && number)){
             ArrayList<Post> tempPosts = currentUser.getUserPosts();
             currentUser = new User(firstname.getText(), surname.getText(),
                     Integer.parseInt(yearBirthDate.getText()), Integer.parseInt(monthBirthDate.getText()),

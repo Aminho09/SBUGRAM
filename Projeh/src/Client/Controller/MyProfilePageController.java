@@ -33,7 +33,6 @@ public class MyProfilePageController {
         postsCounter.setText(Integer.toString(currentUser.getUserPosts().size()));
         followersCounter.setText(Integer.toString(currentUser.getFollower().size()));
         followingsCounter.setText(Integer.toString(currentUser.getFollowing().size()));
-        System.out.println(currentUser.getUserPosts());
         myListPosts.setItems(FXCollections.observableArrayList(currentUser.getUserPosts()));
         myListPosts.setCellFactory(posts -> new PostItem());
     }

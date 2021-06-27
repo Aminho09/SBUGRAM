@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class Post implements Serializable, Comparable {
+public class Post implements Serializable, Comparable<Post> {
 
     public static final long serialVersionUID = 9220343759552300634L;
     private String writer;
@@ -154,8 +154,9 @@ public class Post implements Serializable, Comparable {
         return title;
     }
 
+
     @Override
-    public int compareTo(Object o) {
-        return 0;
+    public int compareTo(Post o) {
+        return (int) (o.timeOfPost - this.timeOfPost);
     }
 }

@@ -72,6 +72,7 @@ public class PostItemController {
                 rePostBack.toBack();
             }
         }
+        reposted.setVisible(false);
         username.setText(post.getWriter());
         title.setText(post.getTitle());
 
@@ -80,8 +81,6 @@ public class PostItemController {
 
     public void Like(ActionEvent actionEvent){
         likedNum = API.like(currentUser, post);
-//        System.out.println(likedNum);
-//        System.out.println(post.getLikedUsersList());
         likedButton.setVisible(true);
         likedButton.toFront();
         unlikedButton.setVisible(false);

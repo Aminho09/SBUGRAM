@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="600.0" style="-fx-background-color: #282C34;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="600.0" style="-fx-background-color: #282C34;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="username" layoutX="96.0" layoutY="12.0" text="username" textAlignment="CENTER" textFill="#5ce004" />
       <Label fx:id="title" alignment="TOP_LEFT" layoutX="96.0" layoutY="37.0" prefHeight="48.0" prefWidth="305.0" text="title" textFill="#5ce004" />
@@ -65,5 +66,10 @@
          </graphic></Button>
       <Label fx:id="rePostNumbers" layoutX="523.0" layoutY="59.0" text="0" textFill="#5ce004" />
       <Label fx:id="commentNumbers" layoutX="478.0" layoutY="59.0" text="0" textFill="#5ce004" />
+      <ImageView fx:id="reposted" fitHeight="35.0" fitWidth="30.0" layoutX="511.0" layoutY="27.0">
+         <image>
+            <Image url="@../Client/Controller/images/grab_500px.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

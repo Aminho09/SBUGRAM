@@ -1,9 +1,6 @@
 package Server;
 
-import common.Command;
-import common.Comment;
-import common.Post;
-import common.User;
+import common.*;
 import javafx.geometry.Pos;
 
 import java.util.*;
@@ -31,6 +28,10 @@ public class API {
             ans.put("answer",user);
         else
             ans.put("answer", null);
+        if (user != null){
+            System.out.println(username + " login");
+            System.out.println("time: " + Time.getTime());
+        }
         return ans;
     }
 
@@ -41,6 +42,8 @@ public class API {
         DataBase.getInstance().updateDataBase();
         answer.put("command", Command.SIGN_UP);
         answer.put("answer", true);
+        System.out.println(newUser.getUsername() + " register " + newUser.getProfilePath());
+        System.out.println("time: " + Time.getTime());
         return answer;
     }
 
@@ -56,8 +59,11 @@ public class API {
 
     public static synchronized Map<String, Object> Logout (Map<String, Object> request){
         Map<String, Object> answer = new HashMap<>();
+        User user = (User) request.get("user");
         answer.put("command", Command.LOG_OUT);
         answer.put("answer", true);
+        System.out.println(user.getUsername() + " logout");
+        System.out.println("time: " + Time.getTime());
         return answer;
     }
 
@@ -69,6 +75,8 @@ public class API {
         DataBase.getInstance().updateDataBase();
         answer.put("command", Command.POSTING);
         answer.put("answer", true);
+        System.out.println("Message: " + newPost.getTitle() + ", " + newPost.getUser().getUsername());
+        System.out.println("time: " + Time.getTime());
         return answer;
     }
 
@@ -130,6 +138,9 @@ public class API {
         DataBase.getInstance().updateDataBase();
         answer.put("command", Command.EDIT_PROFILE);
         answer.put("answer", true);
+        System.out.println(user.getUsername() + "update info");
+        System.out.println("Message: " + user.getProfilePath());
+        System.out.println("time: " + Time.getTime());
         return answer;
     }
 
@@ -151,6 +162,9 @@ public class API {
         DataBase.getInstance().updateDataBase();
         answer.put("command", Command.LIKE);
         answer.put("answer", likedNumber);
+        System.out.println(user.getUsername() + ", like");
+        System.out.println(likedPost.getUser().getUsername() + ", " + likedPost.getTitle());
+        System.out.println("time: " + Time.getTime());
         return answer;
     }
 
@@ -172,6 +186,9 @@ public class API {
         DataBase.getInstance().updateDataBase();
         answer.put("command", Command.UNLIKE);
         answer.put("answer", likedNumber);
+        System.out.println(user.getUsername() + ", Unlike");
+        System.out.println(unlikedPost.getUser().getUsername() + ", " + unlikedPost.getTitle());
+        System.out.println("time: " + Time.getTime());
         return answer;
     }
 
@@ -216,6 +233,9 @@ public class API {
         DataBase.getInstance().updateDataBase();
         answer.put("command", Command.COMMENT);
         answer.put("answer", commentList);
+        System.out.println(user.getUsername() + ", Comment");
+        System.out.println("Message: " + post.getTitle());
+        System.out.println("time: " + Time.getTime());
         return answer;
     }
 
@@ -242,6 +262,9 @@ public class API {
                 + "/" + Server.allUsers.get(user2.getUsername()).getFollower().size();
         answer.put("command", Command.FOLLOW);
         answer.put("answer", following_follower);
+        System.out.println(user1.getUsername() + " follow");
+        System.out.println("Message: " + user2.getUsername());
+        System.out.println("time: " + Time.getTime());
         return answer;
     }
 
@@ -256,6 +279,9 @@ public class API {
                 + "/" + Server.allUsers.get(user2.getUsername()).getFollower().size();
         answer.put("command", Command.UNFOLLOW);
         answer.put("answer", following_follower);
+        System.out.println(user1.getUsername() + " unfollow");
+        System.out.println("Message: " + user2.getUsername());
+        System.out.println("time: " + Time.getTime());
         return answer;
     }
 
@@ -294,6 +320,9 @@ public class API {
                 + Server.allUsers.get(profileOwner.getUsername()).getUserPosts().size();
         answer.put("command", Command.GET_INFO);
         answer.put("answer", Info);
+        System.out.println(userViewer.getUsername() + " get info " + profileOwner.getUsername());
+        System.out.println("Message: " + profileOwner.getUsername() + " " + profileOwner.getProfilePath());
+        System.out.println("time: " + Time.getTime());
         return answer;
     }
     
@@ -329,6 +358,9 @@ public class API {
         DataBase.getInstance().updateDataBase();
         answer.put("command", Command.REPOST);
         answer.put("answer", repostNumber);
+        System.out.println(user.getUsername() + " repost");
+        System.out.println("Message: " + post.getUser().getUsername() + ", " + post.getTitle());
+        System.out.println("time: " + Time.getTime());
         return answer;
     }
 
@@ -344,6 +376,20 @@ public class API {
         DataBase.getInstance().updateDataBase();
         answer.put("command", Command.GET_REPOST_MEMBERS);
         answer.put("answer", list);
+        return answer;
+    }
+
+    public static synchronized Map<String, Object> getTimeline(Map<String, Object> request){
+        Map<String, Object> answer = new HashMap<>();
+        User user = (User) request.get("user");
+        List<Post> postList = new ArrayList<>(allUsers.get(user.getUsername()).getUserPosts());
+        for(User u: allUsers.get(user.getUsername()).getFollowing()){
+            postList.addAll(allUsers.get(u.getUsername()).getUserPosts());
+        }
+        answer.put("command", Command.GET_TIMELINE);
+        answer.put("answer", postList);
+        System.out.println(user.getUsername() + " get posts list");
+        System.out.println("time: " + Time.getTime());
         return answer;
     }
 }

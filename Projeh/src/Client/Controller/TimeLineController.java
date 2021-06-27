@@ -37,6 +37,7 @@ public class TimeLineController {
         ClientMain.update();
         API.getAllUsers(currentUser);
         API.getAllPosts(currentUser);
+        API.getTimeline(currentUser);
         for(User u: users.values()){
             API.getAllOfMyPosts(u);
         }

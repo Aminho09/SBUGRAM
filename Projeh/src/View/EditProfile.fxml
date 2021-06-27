@@ -2,12 +2,11 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.EditProfileController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.Controller.EditProfileController">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="350.0" style="-fx-background-color: #202020;">
          <children>
@@ -25,7 +24,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#otherGender" text="Other" />
                </items>
             </MenuButton>
-            <TextField fx:id="username" alignment="CENTER" layoutX="53.0" layoutY="388.0" prefHeight="25.0" prefWidth="250.0" promptText="Username" />
             <TextField fx:id="password" alignment="CENTER" layoutX="53.0" layoutY="443.0" prefHeight="25.0" prefWidth="250.0" promptText="Password" />
             <TextField fx:id="confirmPassword" alignment="CENTER" layoutX="53.0" layoutY="498.0" prefHeight="25.0" prefWidth="250.0" promptText="Confirm Password" />
             <ImageView fitHeight="35.0" fitWidth="40.0" layoutX="23.0" layoutY="9.0">
@@ -77,6 +75,7 @@
                   <Font name="Centaur" size="24.0" />
                </font>
             </Label>
+            <Label fx:id="username" alignment="CENTER" layoutX="53.0" layoutY="386.0" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #ffffff;" text="username" />
          </children>
       </Pane>
    </children>

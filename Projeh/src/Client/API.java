@@ -266,4 +266,13 @@ public class API {
         }
         return (List<String>) answer.get("answer");
     }
+
+    public static List<Post> getTimeline(User user){
+        Map<String, Object> request = new HashMap<>();
+        request.put("command", Command.GET_TIMELINE);
+        request.put("user", user);
+        request.put("posts", ClientMain.allPosts);
+        Map<String, Object> answer = InformationTrader.serve(request);
+        return (List<Post>) answer.get("answer");
+    }
 }

@@ -17,7 +17,7 @@
          </children>
       </AnchorPane>
       <ListView fx:id="commentsList" layoutX="6.0" layoutY="180.0" onEditStart="#Refresh" prefHeight="362.0" prefWidth="888.0" style="-fx-background-color: #282C34;" />
-      <TextField fx:id="commentText" layoutX="97.0" layoutY="550.0" prefHeight="44.0" prefWidth="736.0" promptText="add your comment" style="-fx-background-color: #282C34;" />
+      <TextField fx:id="commentText" layoutX="97.0" layoutY="550.0" prefHeight="44.0" prefWidth="736.0" promptText="add your comment" style="-fx-background-color: #282C34; fx-text-inner-color-: #dddddd;" />
       <Button layoutX="834.0" layoutY="545.0" mnemonicParsing="false" onAction="#commentButton" style="-fx-background-color: #202020;">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0">
